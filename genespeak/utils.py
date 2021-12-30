@@ -1,4 +1,4 @@
-from typing import Dict, List, Union, Optional
+from typing import Dict, List, Tuple, Union, Optional
 
 # Define Dictionaries and Functions for DNA/Text Conversion
 DEFAULT_SCHEMA = "AGCT"
@@ -17,7 +17,7 @@ class RNABaseEncoder(object):
 
     def __init__(self, schema: str="AGCT", binary_string_length: int=8):
         conds = [
-            len(schema) != 4),
+            len(schema) != 4,
             set(schema) != set(DEFAULT_SCHEMA),
         ]
         self.schema = DEFAULT_SCHEMA if any(conds) else schema
