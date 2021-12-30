@@ -1,0 +1,36 @@
+site_name: genespeak
+repo_url: https://github.com/koaning/genespeak
+site_url: https://koaning.github.io/genespeak/
+site_description: genespeak - Find Bad Labels
+site_author: Vincent D. Warmerdam
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Quickstart: quickstart/index.md
+    - FAQ: quickstart/faq.md
+  - API:
+    - core: api/core.md
+    - reasons: api/utils.md
+
+plugins:
+  - mkdocstrings
+  - search
+copyright: Maintained by <a href="https://twitter.com/sugatoray">Sugato Ray</a>.
+theme:
+  name: material
+  favicon: icon.png
+  logo: icon.png
+  feature:
+    tabs: true
+  palette:
+    primary: white
+    accent: blue
+markdown_extensions:
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
