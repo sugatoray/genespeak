@@ -1,8 +1,8 @@
 site_name: genespeak
-repo_url: https://github.com/koaning/genespeak
-site_url: https://koaning.github.io/genespeak/
-site_description: genespeak - Find Bad Labels
-site_author: Vincent D. Warmerdam
+repo_url: https://github.com/sugatoray/genespeak
+site_url: https://sugatoray.github.io/genespeak/
+site_description: genespeak - A library to encode text as RNA and decode RNA to text
+site_author: Sugato Ray
 
 nav:
   - Home: index.md
