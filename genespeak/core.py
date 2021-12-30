@@ -4,7 +4,7 @@ from utils import Converter
 def text_to_rna(text: str, schema: str="AGCT", binary_string_length: int=8, converter=None) -> str:
     if (converter is None) or (not isinstance(converter, Converter)):
         converter = Converter(
-            schema = schema, 
+            schema = schema,
             binary_string_length = binary_string_length,
         )
     text_ascii_bin8 = converter.convert_info_to_8bit_binary(text)
@@ -12,10 +12,10 @@ def text_to_rna(text: str, schema: str="AGCT", binary_string_length: int=8, conv
     text_as_rnabase = ''.join(rnabase_chr)
     return text_as_rnabase
 
-def rna_to_text(rna: str, schema: str="AGCT", binary_string_length: int=8, converter=None) -> str:
+def rna_to_text(rna: str, schema: str="AGCT", binary_string_length: int=8, converter: Optional[Converter]=None) -> str:
     if (converter is None) or (not isinstance(converter, Converter)):
         converter = Converter(
-            schema = schema, 
+            schema = schema,
             binary_string_length = binary_string_length,
         )
     rnabase_as_bin = converter.encoder.chr2bin
