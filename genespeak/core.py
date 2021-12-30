@@ -1,5 +1,5 @@
 from typing import Dict, List, Union, Optional
-from utils import Converter
+from genespeak.utils import Converter
 
 def text_to_rna(text: str, schema: str="AGCT", binary_string_length: int=8, converter=None) -> str:
     if (converter is None) or (not isinstance(converter, Converter)):
