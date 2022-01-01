@@ -1,5 +1,5 @@
 from genespeak.core import rna_to_text, text_to_rna
-from genespeak.utils import RNABaseEncoder, Converter
+from genespeak.utils import DNABaseEncoder, ASCIIConverter
 
 try:
     from importlib import metadata
@@ -13,6 +13,6 @@ __version__ = metadata.version(__title__)
 __all__ = [
     "rna_to_text",
     "text_to_rna",
-    "RNABaseEncoder",
-    "Converter"
+    "DNABaseEncoder",
+    "ASCIIConverter",
 ]

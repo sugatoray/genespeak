@@ -1,9 +1,10 @@
 from typing import Dict, List, Tuple, Union, Optional
+from abc import ABC, abstractmethod
 
 # Define Dictionaries and Functions for DNA/Text Conversion
 DEFAULT_SCHEMA = "AGCT"
-RNABASE_AS_CHR = dict({'00':'A', '01':'G', '10':'C', '11':'T'})
-RNABASE_AS_BIN = dict({'A':'00', 'G':'01', 'C':'10', 'T':'11'})
+DNABASE_AS_CHR = dict({'00':'A', '01':'G', '10':'C', '11':'T'})
+DNABASE_AS_BIN = dict({'A':'00', 'G':'01', 'C':'10', 'T':'11'})
 
 def dec2bin(x: int, n: int=2) -> str:
     """Converts a single decimal integer to it binary representation
@@ -11,9 +12,9 @@ def dec2bin(x: int, n: int=2) -> str:
     """
     return str(int(bin(x)[2:])).zfill(n)
 
-class RNABaseEncoder(object):
-    rnabase_as_bin: Dict[str, str] = RNABASE_AS_BIN.copy()
-    rnabase_as_chr: Dict[str, str] = RNABASE_AS_CHR.copy()
+class DNABaseEncoder(object):
+    dnabase_as_bin: Dict[str, str] = DNABASE_AS_BIN.copy()
+    dnabase_as_chr: Dict[str, str] = DNABASE_AS_CHR.copy()
 
     def __init__(self, schema: str="AGCT", binary_string_length: int=8):
         conds = [
@@ -21,8 +22,8 @@ class RNABaseEncoder(object):
             set(schema) != set(DEFAULT_SCHEMA),
         ]
         self.schema = DEFAULT_SCHEMA if any(conds) else schema
-        self.rnabase_as_bin = self.chr2bin.copy()
-        self.rnabase_as_chr = self.bin2chr.copy()
+        self.dnabase_as_bin = self.chr2bin.copy()
+        self.dnabase_as_chr = self.bin2chr.copy()
 
     @property
     def bin2chr(self) -> Dict[str, str]:
@@ -33,11 +34,13 @@ class RNABaseEncoder(object):
         return dict((base, dec2bin(i)) for i, base in enumerate(self.schema))
 
 
-class Converter(object):
-    encoder: RNABaseEncoder
+class Converter(ABC): pass
+
+class ASCIIConverter(Converter):
+    encoder: DNABaseEncoder
 
     def __init__(self, schema: str="AGCT", binary_string_length: int=8):
-        self.encoder = RNABaseEncoder(
+        self.encoder = DNABaseEncoder(
             schema=schema,
             binary_string_length=binary_string_length
         )
@@ -82,9 +85,9 @@ class Converter(object):
         split_text_list = list(map(''.join, zip(*[iter(text)]*length)))
         return split_text_list
 
-    def convert_to_rnabase(self, bin_str_list: List[str]) -> Tuple[List[str], List[str]]:
-        rnabase_bin2 = []
+    def convert_to_dnabase(self, bin_str_list: List[str]) -> Tuple[List[str], List[str]]:
+        dnabase_bin2: List[str] = []
         for x_bin8 in bin_str_list:
-            rnabase_bin2 += self.get_bin8_to_bin2(x_bin8)
-        rnabase_chr = [self.encoder.bin2chr.get(x_bin2) for x_bin2 in rnabase_bin2]
-        return (rnabase_chr, rnabase_bin2)
+            dnabase_bin2 += self.get_bin8_to_bin2(x_bin8)
+        dnabase_chr = [self.encoder.bin2chr.get(x_bin2) for x_bin2 in dnabase_bin2]
+        return (dnabase_chr, dnabase_bin2)
