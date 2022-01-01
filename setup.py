@@ -36,7 +36,7 @@ dev_packages = all_packages + docs_packages + test_packages + build_packages
 
 setup(
     name="genespeak",
-    version="0.0.1",
+    version="0.0.2",
     author="Sugato Ray",
     packages=find_packages(exclude=["notebooks", "docs"]),
     description="A library to encode text as DNA and decode DNA to text.",
