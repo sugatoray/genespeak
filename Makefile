@@ -20,11 +20,13 @@ interrogate:
 
 build: clean
 	python setup.py sdist
-	python setup.py bdist_wheel --universal
+	python setup.py bdist_wheel \
+		# --universal
+
+buildcheck: build
+	twine check dist/*
 
 pypi: build
-	# python setup.py sdist
-	# python setup.py bdist_wheel --universal
 	twine upload dist/*
 
 testpypi: build
@@ -33,6 +35,9 @@ testpypi: build
 
 clean:
 	rm -rf **/.ipynb_checkpoints **/.pytest_cache **/__pycache__ **/**/__pycache__ .ipynb_checkpoints .pytest_cache
+
+cleanall: clean
+	rm -rf build/* dist/* genespeak.egg-info/*
 
 style: clean black flake interrogate clean
 
