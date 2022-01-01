@@ -5,10 +5,12 @@ from setuptools import setup, find_packages
 base_packages = []
 
 docs_packages = [
-    "mkdocs==1.1",
-    "mkdocs-material==4.6.3",
-    "mkdocstrings==0.8.0",
+    "mkdocs>=1.2.3",
+    "mkdocs-material==8.1.3",
+    "mkdocstrings>=0.17.0",
     "mktestdocs==0.1.2",
+    "pygments>=2.10",
+    "pymdown-extensions>=9.0",
 ]
 
 test_packages = [
@@ -20,8 +22,14 @@ test_packages = [
     "flake8-print>=4.0.0",
 ]
 
+build_packages = [
+    "twine",
+    "setuptools",
+    "build",
+]
+
 all_packages = base_packages
-dev_packages = all_packages + docs_packages + test_packages
+dev_packages = all_packages + docs_packages + test_packages + build_packages
 
 
 setup(
@@ -29,7 +37,7 @@ setup(
     version="0.0.1",
     author="Sugato Ray",
     packages=find_packages(exclude=["notebooks", "docs"]),
-    description="A library to encode text as RNA and decode RNA to text.",
+    description="A library to encode text as DNA and decode DNA to text.",
     long_description=pathlib.Path("README.md").read_text(),
     long_description_content_type="text/markdown",
     url="https://sugatoray.github.io/genespeak/",
