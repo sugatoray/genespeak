@@ -15,11 +15,13 @@ docs_packages = [
 
 test_packages = [
     "interrogate>=1.5.0",
-    "flake8>=3.6.0",
-    "pytest>=4.0.2",
-    "black>=19.3b0",
-    "pre-commit>=2.2.0",
+    "flake8>=4.0.1",
+    "pytest>=6.2.5",
+    "black>=21.12b0",
+    "pre-commit>=2.16.0",
+    "pre-commit-hooks>=4.0.0"
     "flake8-print>=4.0.0",
+    "flake8-black>=0.2.3",
 ]
 
 build_packages = [
