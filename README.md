@@ -1,3 +1,3 @@
 # GeneSpeak
 
-A library to encode text as RNA and decode RNA to text.
+A library to encode text as DNA and decode DNA to text.
