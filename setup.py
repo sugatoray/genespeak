@@ -36,7 +36,7 @@ dev_packages = all_packages + docs_packages + test_packages + build_packages
 
 setup(
     name="genespeak",
-    version="0.0.2",
+    version="0.0.3",
     author="Sugato Ray",
     author_email='sugatoray.dev@gmail.com',
     python_requires='>=3.6',

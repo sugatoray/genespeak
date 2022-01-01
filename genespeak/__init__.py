@@ -1,4 +1,4 @@
-from genespeak.core import rna_to_text, text_to_rna
+from genespeak.core import dna_to_text, text_to_dna
 from genespeak.utils import DNABaseEncoder, ASCIIConverter
 
 try:
@@ -11,8 +11,8 @@ __title__ = __name__
 __version__ = metadata.version(__title__)
 
 __all__ = [
-    "rna_to_text",
-    "text_to_rna",
+    "dna_to_text",
+    "text_to_dna",
     "DNABaseEncoder",
     "ASCIIConverter",
 ]
