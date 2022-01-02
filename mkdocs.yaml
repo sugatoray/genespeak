@@ -1,9 +1,355 @@
+# cspell: disable
+
+### Project Information
 site_name: genespeak
-repo_url: https://github.com/sugatoray/genespeak
-site_url: https://sugatoray.github.io/genespeak/
 site_description: genespeak - A library to encode text as RNA and decode RNA to text
+site_url: https://sugatoray.github.io/genespeak/
 site_author: Sugato Ray
 
+### Repository
+repo_name: sugatoray/genespeak
+repo_url: https://github.com/sugatoray/genespeak
+edit_uri: '' # comment this out to disable allowing editing of the docs from the website.
+remote_branch: gh-pages
+remote_name: origin
+
+### Copyright
+#copyright: Copyright &copy; 2021 Sugato Ray
+copyright: |
+  Copyright &copy; 2021 <a href="https://github.com/sugatoray"  target="_blank" rel="noopener">Sugato Ray</a>. Follow <a href="https://twitter.com/sugatoray">@sugatoray</a>.
+
+### Preview Controls
+use_directory_urls: true
+strict: false
+dev_addr: localhost:8008
+
+### Configuration
+docs_dir: docs
+
+### Theme
+theme:
+  name: material
+  include_sidebar: true
+  #custom_dir: overrides
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: amber
+      toggle:
+        icon: material/lightbulb-outline
+        #icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: white
+      accent: amber
+      toggle:
+        icon: material/lightbulb
+        #icon: material/toggle-switch
+        name: Switch to light mode
+  features:
+    - content.code.annotate
+    - content.tabs.link
+    # - header.autohide
+    # - navigation.expand
+    - navigation.indexes # @regular
+    - navigation.instant # @regular | enables "instant-loading"; good for a very large docs repo.
+    - navigation.sections # @regular | extending top level sections.
+    - navigation.tabs # @regular | enables showing toplevel sections as tabs (horizontal).
+    - navigation.tabs.sticky # @regular | keeps the tabs visible even when you have scrolled down.
+    - navigation.top # @regular | adds a "back-to-top" is shown after the user scrolls down and then starts to come back up again.
+    # - navigation.tracking # @insiders
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.integrate # @regular | integrates the nav (on-left) with toc (on-right) and places the integrated nav+toc on-left.
+  icon:
+    # repo: fontawesome/brands/git-square
+    repo: fontawesome/brands/git-alt
+    # repo: fontawesome/brands/github
+    # repo: fontawesome/brands/github-alt
+    # repo: fontawesome/brands/github-square
+  #logo: img/icon-white.svg
+  #favicon: img/favicon.png
+  # font:
+  #   text: Roboto
+  #   code: Roboto Mono
+  language: en
+
+#google_analytics:
+#- UA-XXXXXXXXX-X
+#- auto
+
+
+### Plugins
+plugins:
+  - exclude:
+      glob:
+        - '*/storage/*'
+  - search:
+      indexing: 'full' # 'full' (default), 'sections', 'titles'
+  - git-revision-date
+  # macros must be placed after plugin: git-revision-date
+  - macros:
+      include_dir: docs/assets/snippets # snippets
+      # j2_block_start_string: '{{%'
+      # j2_block_end_string: '%}}'
+      # j2_variable_start_string: '{{'
+      # j2_variable_end_string: '}}'
+  - markdownextradata:
+      data: data
+  - minify:
+      minify_html: true
+  # - social # @insiders
+  - mkdocstrings
+  - mkdocs-jupyter:
+      include_source: true
+      ignore_h1_titles: true
+      execute: true
+  - tooltips
+  - markmap:
+      base_path: docs
+      encoding: utf-8
+      file_extension: .mm.md
+      d3_version: 6.7.0
+      lib_version: 0.11.5
+      view_version: 0.2.6
+  - kroki:
+      ServerURL: https://kroki.io
+      EnableBlockDiag: true
+      Enablebpmn: true
+      EnableExcalidraw: true
+      EnableMermaid: true
+      DownloadImages: false
+      DownloadDir: docs/assets/kroki_generated
+  - pdf-export:
+      verbose: true
+      media_type: print # 'print' or 'pdf-export'
+      enabled_if_env: MKDOCS_ENABLE_PDF_EXPORT
+
+
+### Extensions
+markdown_extensions:
+  # - abbr
+  # - admonition
+  # - attr_list
+  # - codehilite
+  # - def_list
+  # - extra
+  # - footnotes
+  # - meta
+  # - md_in_html
+  # - smarty
+  # - tables
+  # - toc
+  ##! Controls: markdown.extensions
+  - markdown.extensions.abbr # same as: - abbr
+  - markdown.extensions.admonition # same as: - admonition
+  - markdown.extensions.attr_list # same as: - attr_list
+  - markdown.extensions.codehilite: # same as: - codehilite
+      guess_lang: false
+  - markdown.extensions.def_list # same as: - def_list
+  - markdown.extensions.extra # same as: - extra
+  - markdown.extensions.footnotes # same as: - footnotes
+  - markdown.extensions.meta: # same as: - meta
+  - markdown.extensions.md_in_html # same as: - md_in_html
+  - markdown.extensions.smarty: # same as: - smarty
+      smart_quotes: false
+  - markdown.extensions.tables # same as: - tables
+  - markdown.extensions.toc: # same as: - toc
+      slugify: !!python/name:pymdownx.slugs.uslugify
+      permalink: true
+      toc_depth: 6 # default: 6
+      #separator: "-"
+
+  - markdown_include.include:
+      base_path: docs
+
+  ##! Controls: mdx
+  - mdx_include:
+      base_path: docs
+  - mdx_truly_sane_lists:
+      nested_indent: 2
+      truly_sane: true
+
+  ##! Controls: pymdownx
+  - pymdownx.arithmatex:
+      generic: true
+  # - pymdownx.b64:
+  #     base_path: '.'
+  - pymdownx.betterem:
+      smart_enable: all # default: 'underscore' ; options: 'underscore', 'all', 'asterisk', or 'none'
+  - pymdownx.caret: # "super^script^" will render as superscript text: super<sup>script</sup>.
+      smart_insert: true # default: true
+      insert: true # default: true
+      superscript: true # default: true
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.escapeall:
+      hardbreak: false
+      nbsp: false
+  # Uncomment these 2 lines during development to more easily add highlights
+  - pymdownx.highlight:
+      use_pygments: true # this uses pygments
+      linenums: true # Set "linenums" to true for enabling
+                      #     code-block line-numbering
+                      #     globally.
+                      # None: only enable line-numbering on a per code-block basis.
+                      # False: disable line-numbering globally.
+      auto_title: false
+      auto_title_map: {
+          "Python Console Session": "Python", # lang: pycon
+        }
+      linenums_style: pymdownx-inline # table or pymdownx-inline
+  - pymdownx.inlinehilite:
+      custom_inline:
+        - name: math
+          class: arithmatex
+          format: !!python/name:pymdownx.arithmatex.inline_mathjax_format
+  - pymdownx.keys:
+      separator: "\uff0b"
+  - pymdownx.magiclink:
+      repo_url_shortener: true
+      repo_url_shorthand: true #
+      social_url_shorthand: true
+      social_url_shortener: true
+      user: sugatoray #
+      repo: teaching_uwm_phy210 #
+      normalize_issue_symbols: true
+  - pymdownx.mark:
+      smart_mark: true
+  - pymdownx.pathconverter:
+      base_path: 'teaching_uwm_phy210' # default: ''
+      relative_path: '' # default ''
+      absolute: true # default: false
+      tags: 'a script img link object embed'
+  - pymdownx.progressbar:
+      level_class: true
+      add_classes: ''
+        #'progress-0plus progress-10plus progress-20plus progress-30plus progress-40plus progress-50plus progress-60plus progress-70plus progress-80plus progress-90plus progress-100plus'
+      progress_increment: 10
+  - pymdownx.saneheaders
+  - pymdownx.superfences:
+      # highlight_code: true # This was removed from pymdownx v9.0
+      preserve_tabs: false
+      disable_indented_code_blocks: false # default: false | set this to "true"
+                                          # if you only use fenced code-blocks.
+      custom_fences:
+      - name: mermaid
+        class: mermaid
+        format: !!python/name:pymdownx.superfences.fence_code_format ''
+      - name: math
+        class: arithmatex
+        format: !!python/name:pymdownx.arithmatex.fence_mathjax_format
+      # - name: md-render
+      #   class: md-render
+      #   format: !!python/name:tools.pymdownx_md_render.md_sub_render
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      base_path:
+        - '.'
+        - './docs_src'
+        - './LICENSE'
+      encoding: 'utf-8' # Encoding to use when reading in the snippets.
+      check_paths: true # Make the build fail if a snippet can't be found.
+  - pymdownx.striphtml
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde # ~~text~~ will render as strikethrough text. "sub~script" will render as subscript text: sub<sub>script</sub>.
+
+### Customization
+extra:
+  # version:
+  #   default: latest
+  #   provider: mike
+  # disqus: sugatoray
+  social:
+  #- icon: fontawesome/brands/github-square
+  #- icon: fontawesome/brands/github-alt
+  - icon: fontawesome/brands/github
+    link: https://github.com/sugatoray
+  # - icon: simpleicons.org/icons/stackoverflow
+  - icon: fontawesome/brands/stack-overflow
+    link: https://stackoverflow.com/users/8474894/cypherx
+  #- icon: fontawesome/brands/stackoverflow
+  #  link: https://discord.gg/VQjSZaeJmf
+  - icon: fontawesome/brands/twitter
+    link: https://twitter.com/sugatoray
+  - icon: fontawesome/brands/linkedin
+    link: https://www.linkedin.com/in/sugatoray
+  - icon: fontawesome/brands/dev
+    link: https://dev.to/sugatoray
+  - icon: fontawesome/brands/medium
+    link: https://medium.com/@sugatoray
+  #- icon: fontawesome/solid/globe
+  #  link: https://www.sugatoray.com
+  alternate:
+  - link: /
+    name: en - English
+
+extra_css:
+  ## for: termynal (terminal animation)
+  - assets/css-js/termynal/css/termynal.css
+  - assets/css-js/termynal/css/custom.css
+  ## for: pymdownx.progressbar
+  - assets/css-js/general/css/progressbar.css
+  #- assets/css-js/pymdownx-extras/css/extra.css # (for striped progress bar)
+  ## for: mkdocs-tooltips
+  - assets/css-js/mkdocs-tooltips/css/hint.min.css
+  - assets/css-js/mkdocs-tooltips/css/custom.css
+  ## for: mkdocs-material using highlight.js
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css
+  ## for: w3schools css's
+  - https://www.w3schools.com/w3css/4/w3.css
+  - https://www.w3schools.com/lib/w3-colors-flat.css
+  - https://www.w3schools.com/lib/w3-colors-highway.css
+  - https://www.w3schools.com/lib/w3-colors-safety.css
+  - https://www.w3schools.com/lib/w3-colors-signal.css
+  - https://www.w3schools.com/lib/w3-colors-vivid.css
+  - https://www.w3schools.com/lib/w3-colors-food.css
+  - https://www.w3schools.com/lib/w3-colors-camo.css
+
+
+extra_javascript:
+  ## for: pymdownx.arithmatex
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
+  ## for: markdown.extensions.tables
+  - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
+  - assets/css-js/general/js/tables.js
+  ## for: termynal (terminal animation)
+  - assets/css-js/termynal/js/termynal.js
+  - assets/css-js/termynal/js/custom.js
+  ## for: pymdownx.progressbar
+  #- assets/css-js/pymdownx-extras/js/extra-uml.js # (for striped progress bar)
+  ## for: fontawesome (personal kit-link remove before making public)
+  # example fontawesome-kit: https://kit.fontawesome.com/0a1b2c3d4e.js
+  # Set the environment variable "FONTAWESOME_KIT" with the value of the kit.
+  - !ENV FONTAWESOME_KIT
+  ## for: lottiefiles
+  - https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js
+  ## for: mkdocs-material using highlight.js
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js
+  - assets/css-js/general/js/highlight-config.js
+  ## for: mkdocs-markmap
+  - https://unpkg.com/d3@6.7.0/dist/d3.min.js
+  - https://unpkg.com/markmap-lib@0.11.5/dist/browser/index.min.js
+  - https://unpkg.com/markmap-view@0.2.6/dist/index.min.js
+  ## Others
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+
+
+### Pages: Navigation
+
+## @@ Begin NAVIGATION
 nav:
   - Home: index.md
   - Getting Started:
@@ -13,24 +359,4 @@ nav:
     - core: api/core.md
     - reasons: api/utils.md
 
-plugins:
-  - mkdocstrings
-  - search
-copyright: Maintained by <a href="https://twitter.com/sugatoray">Sugato Ray</a>.
-theme:
-  name: material
-  favicon: icon.png
-  logo: icon.png
-  feature:
-    tabs: true
-  palette:
-    primary: white
-    accent: blue
-markdown_extensions:
-  - toc:
-      permalink: true
-  - pymdownx.arithmatex:
-      generic: true
-extra_javascript:
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+## @@ End NAVIGATION

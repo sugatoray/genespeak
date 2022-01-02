@@ -17,3 +17,15 @@ print(f'Text: {text}\nEncoded DNA: {dna}\n')
 text_from_dna = gp.dna_to_text(dna, schema=schema)
 print(f'Text: {text}\nEncoded DNA: {dna}\nDecoded Text: {text_from_dna}\n')
 ```
+
+**Output**
+
+```sh
+genespeak version: 0.0.3
+Text: Hello World!
+Encoded DNA: TACATCTTTCGATCGATCGGACAATTTGTCGGTGACTCGATCTAACAT
+
+Text: Hello World!
+Encoded DNA: TACATCTTTCGATCGATCGGACAATTTGTCGGTGACTCGATCTAACAT
+Decoded Text: Hello World!
+```

@@ -1,0 +1,31 @@
+name: "MkDocs Publish Docs on GitHub Pages CI"
+on:
+  push:
+    branches:
+      - master
+      - main
+
+env:
+  PYTHON_VERSION: "3.7"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python runtime
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install Python dependencies for MkDocs
+        run: pip install -r requirements/docs.txt
+
+      - name: Deploy documentation
+        env:
+          FONTAWESOME_KIT: ${{ secrets.FONTAWESOME_KIT }}
+        run: |
+          mkdocs gh-deploy --force
+          mkdocs --version
