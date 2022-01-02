@@ -1,0 +1,20 @@
+# file: CITATION.cff
+
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Ray"
+  given-names: "Sugato"
+  orcid: "https://orcid.org/0000-0002-9886-2324"
+title: "genespeak"
+# version: 1.0.0
+# doi: 10.5281/zenodo.1234
+# date-released: 2021-09-05
+url: "https://github.com/sugatoray/genespeak"
+
+#### Citations file related resources:
+## - https://github.blog/2021-08-19-enhanced-support-citations-github/
+## - https://citation-file-format.github.io/
+## - https://www.linkedin.com/posts/github_enhanced-citation-support-on-github-activity-6834161054352850944-LRDT
+## - https://citation-file-format.github.io/cff-initializer-javascript/
+## - https://guides.github.com/activities/citable-code/
