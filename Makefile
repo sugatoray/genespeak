@@ -1,7 +1,9 @@
-.PHONY: black flake test types install interrogate build buildcheck pypi testpypi clean cleanall style check pipinstall this
+.PHONY: black flake test types install interrogate build buildcheck pypi testpypi clean cleanall style check pipinstalltest this
 
 PACKAGE_NAME := "genespeak"
 TESTPYPI_DOWNLOAD_URL := "https://test.pypi.org/simple/"
+PYPIPINSTALL := "python -m pip install -U --index-url"
+PIPINSTALL_PYPITEST := "$(PYPIPINSTALL) $(TESTPYPI_DOWNLOAD_URL)"
 
 black:
 	black --target-version py38 $(PACKAGE_NAME) tests setup.py
@@ -49,8 +51,8 @@ style: clean black flake interrogate clean
 check: clean black flake interrogate test clean
 
 pipinstalltest:
-	python -m pip install -U --index-url $(TESTPYPI_DOWNLOAD_URL) $(PACKAGE_NAME)
+	@if [ $(VERSION) ]; then $(PIPINSTALL_PYPITEST) $(PACKAGE_NAME)==$(VERSION); else $(PIPINSTALL_PYPITEST) $(PACKAGE_NAME); fi;
 
 this:
 	# example: make this VERSION="0.0.3"
-	@echo $(PACKAGE_NAME)==$(VERSION)
+	@if [ $(VERSION) ]; then echo This is $(PACKAGE_NAME)==$(VERSION); else echo This is $(PACKAGE_NAME); fi;

@@ -40,8 +40,11 @@ setup(
     author="Sugato Ray",
     author_email='sugatoray.dev@gmail.com',
     python_requires='>=3.6',
-    keywords="encoding decoding text-to-dna dna-to-text",
-    packages=find_packages(exclude=["notebooks", "docs", "test*"]),
+    keywords="genespeak encoding decoding text-to-dna dna-to-text",
+    packages=find_packages(
+        include = ["genespeak"],
+        exclude = ["notebooks", "docs", "test*"]
+    ),
     description="A library to encode text as DNA and decode DNA to text.",
     long_description=pathlib.Path("README.md").read_text(),
     long_description_content_type="text/markdown",
@@ -53,6 +56,8 @@ setup(
     },
     install_requires=base_packages,
     extras_require={"dev": dev_packages},
+    tests_require=test_packages,
+    test_suite="tests",
     license_files=("LICENSE",),
     classifiers=[
         "Intended Audience :: Science/Research",
