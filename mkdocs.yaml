@@ -365,6 +365,7 @@ nav:
     - FAQ: quickstart/faq.md
   - API:
     - core: api/core.md
-    - utils: api/utils.md
+    - converter: api/converter.md
+    - text-strategies: api/text_strategies.md
 
 ## @@ End NAVIGATION
