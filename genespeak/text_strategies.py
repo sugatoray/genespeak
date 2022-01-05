@@ -26,6 +26,7 @@ class UTF8TextEncodingStrategy(BaseTextEncodingStrategy):
 
 @dataclass
 class TextEncodingStrategies:
+    """A class for all available text-encoding strategies."""
     ascii = ASCIITextEncodingStrategy()
     utf8 = UTF8TextEncodingStrategy()
 
@@ -34,7 +35,12 @@ AVAILABLE_STRATEGY_NAMES = [s for s in dir(TextEncodingStrategies) if not s.star
 DEFAULT_STRATEGY_NAME = "ascii"
 
 def set_strategy(strategy_name: Optional[str]=None):
-    """Returns a text-encoding strategy by name."""
+    """Returns a text-encoding strategy by name.
+
+    Arguments:
+        strategy_name: name of the text-encoding strategy
+                       (options: ``ascii``, ``utf-8``)
+    """
     if strategy_name:
         strategy_name = strategy_name.replace("-", "")
     if (strategy_name is None) or (strategy_name not in AVAILABLE_STRATEGY_NAMES):
