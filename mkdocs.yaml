@@ -63,7 +63,7 @@ theme:
     - search.highlight
     - search.share
     - search.suggest
-    - toc.integrate # @regular | integrates the nav (on-left) with toc (on-right) and places the integrated nav+toc on-left.
+    - toc.integrate: false # @regular | integrates the nav (on-left) with toc (on-right) and places the integrated nav+toc on-left.
   icon:
     # repo: fontawesome/brands/git-square
     repo: fontawesome/brands/git-alt
@@ -367,5 +367,6 @@ nav:
     - core: api/core.md
     - converter: api/converter.md
     - text-strategies: api/text_strategies.md
+    - utils: api/utils.md
 
 ## @@ End NAVIGATION
