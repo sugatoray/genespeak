@@ -30,7 +30,7 @@ You can install the library via `pip` or `conda`.
 **Install with pip**
 
 ```
-python -m pip install genespeak
+pip install genespeak
 ```
 
 **Install with conda**

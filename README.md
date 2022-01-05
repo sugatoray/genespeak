@@ -8,7 +8,7 @@
 [![Conda (channel only)](https://img.shields.io/conda/vn/conda-forge/genespeak?logo=anaconda&style=flat&color=orange)][#conda-forge-package]
 [![Docs - GitHub.io](https://img.shields.io/static/v1?logo=github&style=flat&color=pink&label=docs&message=genespeak)][#docs-package]
 
-[#github-license]: https://github.com/sugatoray/genespeak/blob/main/LICENSE
+[#github-license]: https://github.com/sugatoray/genespeak/blob/master/LICENSE
 [#pypi-package]: https://pypi.org/project/genespeak/
 [#conda-forge-package]: https://anaconda.org/conda-forge/genespeak
 [#docs-package]: https://koaning.github.io/genespeak/
@@ -18,7 +18,36 @@ A library to encode text as DNA and decode DNA to text.
 
 GeneSpeak allows you to encode regular text as DNA using base-pairs (`A`, `T`, `G`, `C`) and convert back to text. The coding scheme could be any combination of `A`, `T`, `G`, `C`.
 
-## Example
+## Installation
+
+You can install the library via `pip` or `conda`.
+
+**Install with pip**
+
+```
+pip install genespeak
+```
+
+**Install with conda**
+
+```
+conda install -c conda-forge genespeak
+```
+
+## Quickstart
+
+See the quickstart guide here.
+
+| Service | Link/Badge |
+|:---:|:---:|
+| Colab | [![Colab Badge](https://colab.research.google.com/assets/colab-badge.svg)][gh-colab-quickstart] |
+| Binder | [![Binder](https://mybinder.org/badge_logo.svg)][gh-binder-quickstart] |
+
+[gh-colab-quickstart]: https://colab.research.google.com/github/sugatoray/genespeak/blob/master/notebooks/quickstart_genespeak.ipynb
+
+[gh-binder-quickstart]: https://mybinder.org/v2/gh/sugatoray/genespeak/master?labpath=notebooks%2Fquickstart.ipynb
+
+## Usage
 
 ```python
 import genespeak as gp
