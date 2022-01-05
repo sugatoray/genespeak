@@ -89,6 +89,7 @@ plugins:
         - '*/storage/*'
   - search:
       indexing: 'full' # 'full' (default), 'sections', 'titles'
+  - autorefs
   - git-revision-date
   # macros must be placed after plugin: git-revision-date
   - macros:
@@ -102,7 +103,14 @@ plugins:
   - minify:
       minify_html: true
   # - social # @insiders
-  - mkdocstrings
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          rendering:
+            show_source: true
+          watch:
+            - genespeak
   - mkdocs-jupyter:
       include_source: true
       ignore_h1_titles: true
@@ -342,8 +350,8 @@ extra_javascript:
   - https://unpkg.com/markmap-lib@0.11.5/dist/browser/index.min.js
   - https://unpkg.com/markmap-view@0.2.6/dist/index.min.js
   ## Others
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  #- https://polyfill.io/v3/polyfill.min.js?features=es6
+  #- https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 
 
@@ -357,6 +365,6 @@ nav:
     - FAQ: quickstart/faq.md
   - API:
     - core: api/core.md
-    - reasons: api/utils.md
+    - utils: api/utils.md
 
 ## @@ End NAVIGATION

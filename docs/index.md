@@ -23,6 +23,22 @@ Adenine pairs with thymine, and cytosine pairs with guanine.
 |:---:|
 | Source: <https://www.genome.gov/genetics-glossary/acgt> |
 
+## Installation
+
+You can install the library via `pip` or `conda`.
+
+**Install with pip**
+
+```
+python -m pip install genespeak
+```
+
+**Install with conda**
+
+```
+conda install -c conda-forge genespeak
+```
+
 ## **Example**
 
 ```python

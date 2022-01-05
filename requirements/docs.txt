@@ -32,6 +32,7 @@ mkapi
 mkautodoc
 mkdocstrings>=0.16.2
 mkdocs-gen-files>=0.3.3
+mkdocs-autorefs>=0.3.1
 
 
 ## Citations & bibliography
