@@ -1,5 +1,6 @@
 from genespeak.core import dna_to_text, text_to_dna
-from genespeak.utils import DNABaseEncoder, ASCIIConverter
+from genespeak.converter import DNABaseEncoder, Converter
+from genespeak.text_strategies import TextEncodingStrategies
 
 try:
     from importlib import metadata
@@ -14,5 +15,6 @@ __all__ = [
     "dna_to_text",
     "text_to_dna",
     "DNABaseEncoder",
-    "ASCIIConverter",
+    "Converter",
+    "TextEncodingStrategies",
 ]
