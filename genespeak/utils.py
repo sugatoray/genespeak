@@ -1,7 +1,18 @@
+# cspell: disable
+
+from typing import Union, List, Tuple
 import re
 
-def run_length_encode(dna: str) -> str:
-    """Return the run length encoding of s string
+
+_PAT_RLE_DECODE = r"((\d+)(\w))"
+_PAT_RLE_DECODE = re.compile(_PAT_RLE_DECODE)
+
+_PAT_RLE_ENCODE = r"((A*)(C*)(G*)(T*))"
+_PAT_RLE_ENCODE = re.compile(_PAT_RLE_ENCODE)
+
+
+def run_length_encode(dna: str, use_regex: bool = True, return_list: bool = False) -> Union[str, List[Tuple[str, int]]]:
+    """Return the run length encoding of a string
 
     Usage:
 
@@ -11,11 +22,16 @@ def run_length_encode(dna: str) -> str:
     ```
 
     """
+    if use_regex:
+        return regex_dna_rle(dna, return_list=return_list)
+    else:
+        return noregex_dna_rle(dna, return_list=return_list)
+
+def noregex_dna_rle(dna: str, return_list: bool = False) -> Union[str, List[Tuple[str, int]]]:
+
     counter = []
     temp_counter = []
-    # print(len(dna))
     for i, e in enumerate(dna):
-
         if i == 0:
             temp_counter = [e, 1]
         else:
@@ -28,14 +44,36 @@ def run_length_encode(dna: str) -> str:
             if i == len(dna) - 1:
                 counter.append(tuple(temp_counter.copy()))
 
-        ## print(i, counter)
+    if not return_list:
+        dna_rle = ''.join([f'{c[1]}{c[0]}' for c in counter])
+        return dna_rle
+    else:
+        return counter
 
-    dna_rle = ''.join([f'{c[1]}{c[0]}' for c in counter])
+
+def regex_dna_rle(dna: str, return_list: bool = False) -> Union[str, List[Tuple[str, int]]]:
+    pat = _PAT_RLE_ENCODE
+    if return_list:
+        dna_rle = []
+    else:
+        dna_rle = ''
+    for v in pat.findall(dna):
+        groups = v[1:]
+        for g in groups:
+            if g:
+                if return_list:
+                    dna_rle.append(tuple([g[0], len(g)]))
+                else:
+                    dna_rle += f"{len(g)}{g[0]}"
+    if return_list:
+        dna_rle = ''.join([f'{c[1]}{c[0]}' for c in dna_rle])
 
     return dna_rle
 
 
 def run_length_decode(dna_rle: str) -> str:
-    pat = r"((\d+)(\w))"
-    pat = re.compile(pat)
-    return ''.join([c * int(n) for g, n, c in pat.findall(dna_rle)])
+    pat = _PAT_RLE_DECODE
+    return ''.join([c * int(n) for _, n, c in pat.findall(dna_rle)])
+
+
+
