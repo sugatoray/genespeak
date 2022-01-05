@@ -2,7 +2,24 @@ from typing import Dict, List, Union, Optional
 from genespeak.converter import Converter, set_converter
 
 
-def text_to_dna(text: str, schema: str = "AGCT", binary_string_length: int = 8, strategy: str="ascii", converter: Optional[Converter] = None) -> str:
+def text_to_dna(text: str,
+                schema: str = "AGCT",
+                binary_string_length: int = 8,
+                strategy: str="ascii",
+                converter: Optional[Converter] = None,
+    ) -> str:
+    """Encodes text string into DNA string with dna-bases (``A``, ``C``, ``G``, ``T``).
+
+    Argument:
+        text: a string
+        schema: the conversion schema to use (default: ``AGCT``)
+        binary_string_length: the length of the binary-string during conversion
+                              (use ``8`` for ``strategy='ascii'`` and ``24`` for ``strategy='utf-8'``)
+        strategy: the text-encoding/decoding strategy to use (default: ``ascii``)
+                  (options: ``ascii``, ``utf-8``)
+        converter: optionally you can provide a converter (``genespeak.converter.Converter``)
+    """
+
     if (converter is None) or (not isinstance(converter, Converter)):
         converter = Converter(
             schema = schema,
@@ -16,7 +33,24 @@ def text_to_dna(text: str, schema: str = "AGCT", binary_string_length: int = 8, 
     return text_as_dnabase
 
 
-def dna_to_text(dna: str, schema: str = "AGCT", binary_string_length: int = 8, strategy: str = "ascii", converter: Optional[Converter] = None) -> str:
+def dna_to_text(dna: str,
+                schema: str = "AGCT",
+                binary_string_length: int = 8,
+                strategy: str = "ascii",
+                converter: Optional[Converter] = None,
+    ) -> str:
+    """Decodes valid encoded DNA string back into the equivalent text string.
+
+    Argument:
+        dna: a string of dna-base
+        schema: the conversion schema to use (default: ``AGCT``)
+        binary_string_length: the length of the binary-string during conversion
+                              (use ``8`` for ``strategy='ascii'`` and ``24`` for ``strategy='utf-8'``)
+        strategy: the text-encoding/decoding strategy to use (default: ``ascii``)
+                  (options: ``ascii``, ``utf-8``)
+        converter: optionally you can provide a converter (``genespeak.converter.Converter``)
+    """
+
     converter = set_converter(
         schema = schema,
         binary_string_length = binary_string_length,
