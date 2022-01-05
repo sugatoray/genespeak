@@ -1,4 +1,3 @@
-# from typing import List, Tuple
 import re
 
 def run_length_encode(dna: str) -> str:

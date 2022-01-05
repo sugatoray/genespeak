@@ -1,5 +1,4 @@
 from typing import Dict, List, Tuple, Union, Optional
-from abc import ABC, abstractmethod
 from genespeak.text_strategies import AVAILABLE_STRATEGY_NAMES, TextEncodingStrategies, set_strategy
 
 # Define Dictionaries and Functions for DNA/Text Conversion
