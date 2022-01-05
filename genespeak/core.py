@@ -10,7 +10,7 @@ def text_to_dna(text: str,
     ) -> str:
     """Encodes text string into DNA string with dna-bases (``A``, ``C``, ``G``, ``T``).
 
-    Argument:
+    Arguments:
         text: a string
         schema: the conversion schema to use (default: ``AGCT``)
         binary_string_length: the length of the binary-string during conversion
@@ -41,7 +41,7 @@ def dna_to_text(dna: str,
     ) -> str:
     """Decodes valid encoded DNA string back into the equivalent text string.
 
-    Argument:
+    Arguments:
         dna: a string of dna-base
         schema: the conversion schema to use (default: ``AGCT``)
         binary_string_length: the length of the binary-string during conversion
