@@ -226,12 +226,12 @@ markdown_extensions:
       social_url_shorthand: true
       social_url_shortener: true
       user: sugatoray #
-      repo: teaching_uwm_phy210 #
+      repo: genespeak #
       normalize_issue_symbols: true
   - pymdownx.mark:
       smart_mark: true
   - pymdownx.pathconverter:
-      base_path: 'teaching_uwm_phy210' # default: ''
+      base_path: 'genespeak' # default: ''
       relative_path: '' # default ''
       absolute: true # default: false
       tags: 'a script img link object embed'
