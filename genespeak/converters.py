@@ -125,13 +125,6 @@ class Converter(object):
         else:
             strategy = self.strategy
 
-        # TODO: No-need for two strategies, as the code is strategy-agnostic here.
-        #       Remove duplicated code (keep the for-loop with x_bin2N only).
-        # if strategy.name == "ascii":
-        #     for x_bin8 in bin_str_list:
-        #         dnabase_bin2 += self.get_bin8_to_bin2(x_bin8)
-        # elif strategy.name == "utf-8":
-        #     length2N = strategy.binary_string_length
         for x_bin2N in bin_str_list:
             dnabase_bin2 += self.get_bin2N_to_bin2(x_bin2N)
         dnabase_chr = [self.encoder.bin2chr.get(x_bin2) for x_bin2 in dnabase_bin2]
