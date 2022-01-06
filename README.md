@@ -16,7 +16,11 @@
 
 A library to encode text as DNA and decode DNA to text.
 
-GeneSpeak allows you to encode regular text as DNA using base-pairs (`A`, `T`, `G`, `C`) and convert back to text. The coding scheme could be any combination of `A`, `T`, `G`, `C`.
+GeneSpeak allows you to encode regular text as DNA using
+base-pairs (`A`, `T`, `G`, `C`) and convert back to the
+original text. Text encoding is done for both `ascii` and
+`utf-8` characters based on the `strategy` keyword argument.
+The encoding scheme could be any combination of `A`, `T`, `G`, `C`.
 
 ## Installation
 
@@ -71,4 +75,16 @@ Encoded DNA: TACATCTTTCGATCGATCGGACAATTTGTCGGTGACTCGATCTAACAT
 Text: Hello World!
 Encoded DNA: TACATCTTTCGATCGATCGGACAATTTGTCGGTGACTCGATCTAACAT
 Decoded Text: Hello World!
+```
+
+## Citation
+
+You may cite this library as follows.
+
+```bibtex
+@software{ray2022genespeak,
+    author = {Ray, Sugato},
+    title = {{genespeak}},
+    url = {https://github.com/sugatoray/genespeak}
+}
 ```
