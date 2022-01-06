@@ -57,18 +57,19 @@ See the quickstart guide here.
 import genespeak as gp
 print(f'{gp.__name__} version: {gp.__version__}')
 
-schema = "ATCG"
+schema = "ATCG" # (1)
+strategy = "ascii" # (2)
 text = "Hello World!"
+
 dna = gp.text_to_dna(text, schema=schema)
-print(f'Text: {text}\nEncoded DNA: {dna}\n')
 text_from_dna = gp.dna_to_text(dna, schema=schema)
-print(f'Text: {text}\nEncoded DNA: {dna}\nDecoded Text: {text_from_dna}\n')
+print(f'Text: {text}\nEncoded DNA: {dna}\nDecoded Text: {text_from_dna}\nSuccess: {text == text_from_dna}')
 ```
 
 **Output**
 
 ```sh
-genespeak version: 0.0.3
+genespeak version: 0.0.5
 Text: Hello World!
 Encoded DNA: TACATCTTTCGATCGATCGGACAATTTGTCGGTGACTCGATCTAACAT
 
@@ -77,6 +78,18 @@ Encoded DNA: TACATCTTTCGATCGATCGGACAATTTGTCGGTGACTCGATCTAACAT
 Decoded Text: Hello World!
 ```
 
+## Documentation
+
+[![Docs - GitHub.io](https://img.shields.io/static/v1?logo=github&style=flat&color=pink&label=docs&message=genespeak)][#docs-package]
+
+The `genespeak` docs are maintained [here][#docs-package].
+
+## License
+
+[![GitHub - License](https://img.shields.io/github/license/sugatoray/genespeak?logo=github&style=flat&color=green)][#github-license]
+
+The library is available under [MIT license][#github-license].
+
 ## Citation
 
 You may cite this library as follows.
@@ -84,7 +97,15 @@ You may cite this library as follows.
 ```bibtex
 @software{ray2022genespeak,
     author = {Ray, Sugato},
-    title = {{genespeak}},
+    title = {{genespeak} - A library to encode text as DNA and decode DNA to text},
     url = {https://github.com/sugatoray/genespeak}
 }
 ```
+
+## GeneSpeak Thumb Print 👍
+
+Let's have some fun! The following is a ***GeneSpeak thumbprint*** of `genespeak` itself.
+
+| **schema** | **strategy** | **thumbprint** |
+|:---:|:---:|:---|
+| `ATCG` | `ascii` | `TCTGTCTTTCGCTCTTTGAGTGAATCTTTCATTCCG` |
