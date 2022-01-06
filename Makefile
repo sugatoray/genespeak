@@ -30,7 +30,7 @@ build: clean
 	python setup.py bdist_wheel \
 		# --universal
 
-buildcheck: build
+buildcheck: cleanall build
 	twine check dist/*
 
 pypi: build
