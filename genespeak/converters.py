@@ -131,7 +131,7 @@ class Converter(object):
         return (dnabase_chr, dnabase_bin2)
 
     def get_strategy(self, strategy_name: str = "ascii"):
-        # return getattr(self.strategies, strategy_name.replace("-", ""))
+        """Returns strategy based on name."""
         return set_strategy(strategy_name=strategy_name)
 
 
