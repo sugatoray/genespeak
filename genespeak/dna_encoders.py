@@ -45,8 +45,8 @@ class DNABaseEncoder(object):
         ]
         self.schema = DEFAULT_SCHEMA if any(conds) else schema
         self.binary_string_length = binary_string_length
-        self.dnabase_as_bin = self.chr2bin.copy()
-        self.dnabase_as_chr = self.bin2chr.copy()
+        self.dnabase_as_bin = self.chr2bin.copy()  # type: ignore
+        self.dnabase_as_chr = self.bin2chr.copy()  # type: ignore
 
     @property
     def bin2chr(self) -> Dict[str, str]:

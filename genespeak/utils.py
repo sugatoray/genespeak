@@ -76,7 +76,7 @@ def regex_dna_rle(dna: str, return_list: bool = False) -> Union[str, List[Tuple[
         for g in groups:
             if g:
                 if return_list:
-                    dna_rle.append(tuple([g[0], len(g)])) # type: ignore
+                    dna_rle.append(tuple([g[0], len(g)]))  # type: ignore
                 else:
                     dna_rle += f"{len(g)}{g[0]}"
     if return_list:

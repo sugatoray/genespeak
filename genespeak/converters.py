@@ -87,7 +87,7 @@ class Converter(object):
 
         # Determine text-encoding-strategy
         if strategy is None:
-            strategy = self.get_strategy(strategy_name=strategy) # type: ignore
+            strategy = self.get_strategy(strategy_name=strategy)  # type: ignore
         else:
             strategy = self.strategy
 
