@@ -11,7 +11,7 @@ except ImportError:  # for Python<3.8
 
 
 __title__ = __name__
-__version__ = metadata.version(__title__)
+__version__ = metadata.version(__title__)  # type: ignore
 
 __all__ = [
     # core

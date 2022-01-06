@@ -87,14 +87,14 @@ class Converter(object):
 
         # Determine text-encoding-strategy
         if strategy is None:
-            strategy = self.get_strategy(strategy_name=strategy)
+            strategy = self.get_strategy(strategy_name=strategy) # type: ignore
         else:
             strategy = self.strategy
 
         for x_bin2N in bin_str_list:
             dnabase_bin2 += self.get_bin2N_to_bin2(x_bin2N)
         dnabase_chr = [self.encoder.bin2chr.get(x_bin2) for x_bin2 in dnabase_bin2]
-        return (dnabase_chr, dnabase_bin2)
+        return (dnabase_chr, dnabase_bin2)  # type: ignore
 
     def get_strategy(self, strategy_name: str = "ascii"):
         """Returns strategy based on name."""

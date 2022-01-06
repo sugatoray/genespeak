@@ -61,7 +61,7 @@ def dna_to_text(dna: str,
     dnabase_as_bin = converter.encoder.chr2bin
     dnabase_as_bin2 = [dnabase_as_bin.get(x_chr) for x_chr in dna]
     length2N = converter.strategy.binary_string_length
-    dnabase_as_bin2N = converter.get_bin2_to_bin2N(''.join(dnabase_as_bin2), length2N=length2N)
+    dnabase_as_bin2N = converter.get_bin2_to_bin2N(''.join(dnabase_as_bin2), length2N=length2N) # type: ignore
     # num_digits = 2 # length of any('00', '01', '10', '11')
     # binary to decimal conversion: int(x, 2)
     dnabase_as_chr = [chr(int(x, 2)) for x in dnabase_as_bin2N]
