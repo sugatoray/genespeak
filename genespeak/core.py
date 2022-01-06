@@ -1,5 +1,5 @@
 from typing import Dict, List, Union, Optional
-from genespeak.converter import Converter, set_converter
+from genespeak.converters import Converter, set_converter
 
 
 def text_to_dna(text: str,

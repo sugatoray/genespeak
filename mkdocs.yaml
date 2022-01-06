@@ -365,7 +365,8 @@ nav:
     - FAQ: quickstart/faq.md
   - API:
     - core: api/core.md
-    - converter: api/converter.md
+    - converter: api/converters.md
+    - dna_encoders: api/dna_encoders.md
     - text-strategies: api/text_strategies.md
     #- utils: api/utils.md
 
