@@ -1,5 +1,7 @@
 # GeneSpeak
 
+![genespeak-banner](docs/assets/images/genespeak_banner_01.png)
+
 <!--- BADGES: START --->
 [![GitHub - License](https://img.shields.io/github/license/sugatoray/genespeak?logo=github&style=flat&color=green)][#github-license]
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/genespeak?logo=pypi&style=flat&color=blue)][#pypi-package]

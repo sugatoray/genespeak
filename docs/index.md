@@ -1,6 +1,11 @@
 ---
-package_version: 0.0.5
+# package:
+#     version: 0.0.5
+#     banner:
+#         path: assets/images/genespeak_banner_01.png
 ---
+
+![genespeak-banner]({{ variables.package.banner.path }})
 
 # **GeneSpeak**
 
@@ -71,7 +76,7 @@ print(f'Text: {text}\nEncoded DNA: {dna}\nDecoded Text: {text_from_dna}\n')
 **Output**
 
 ```sh
-genespeak version: {{ package_version }}
+genespeak version: {{ variables.package.version }}
 
 Text: Hello World!
 Encoded DNA: TACATCTTTCGATCGATCGGACAATTTGTCGGTGACTCGATCTAACAT

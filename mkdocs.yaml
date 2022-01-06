@@ -2,7 +2,7 @@
 
 ### Project Information
 site_name: genespeak
-site_description: genespeak - A library to encode text as RNA and decode RNA to text
+site_description: genespeak - A library to encode text as DNA and decode DNA to text
 site_url: https://sugatoray.github.io/genespeak/
 site_author: Sugato Ray
 
@@ -301,6 +301,11 @@ extra:
   alternate:
   - link: /
     name: en - English
+  variables:
+    package:
+      version: 0.0.5
+      banner:
+          path: assets/images/genespeak_banner_01.png
 
 extra_css:
   ## for: termynal (terminal animation)
