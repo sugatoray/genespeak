@@ -11,7 +11,21 @@ _PAT_RLE_ENCODE = r"((A*)(C*)(G*)(T*))"
 _PAT_RLE_ENCODE = re.compile(_PAT_RLE_ENCODE)
 
 
-def run_length_encode(dna: str, use_regex: bool = True, return_list: bool = False) -> Union[str, List[Tuple[str, int]]]:
+def run_length_encode(dna: str) -> str:
+    """Return the run length encoding of a string
+
+    Usage:
+
+    ```python
+    dna = "A"*3 + "G"*2 + "C" + "T"*5 + "A"*6 + "GCCT"
+    dna_rle = run_length_encode(dna)
+    ```
+
+    """
+
+    return _run_length_encode(dna, use_regex=True, return_list=False)  # type: ignore
+
+def _run_length_encode(dna: str, use_regex: bool = True, return_list: bool = False) -> Union[str, List[Tuple[str, int]]]:
     """Return the run length encoding of a string
 
     Usage:
