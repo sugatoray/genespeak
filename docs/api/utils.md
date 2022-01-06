@@ -9,7 +9,7 @@ genespeak.utils.run_length_encode
 
 ## Run Length Decode
 
-::: genespeak.utils.run_length_decode
+genespeak.utils.run_length_decode
     rendering:
         show_source: true
         heading_level: 3
