@@ -104,7 +104,7 @@ You may cite this library as follows.
 
 ## GeneSpeak Thumb Print 👍
 
-Let's have some fun! The following is a ***GeneSpeak thumbprint*** of `genespeak` itself.
+Let's have some fun! ✨ The following is a ***GeneSpeak thumbprint*** of `genespeak` itself.
 
 | **schema** | **strategy** | **thumbprint** |
 |:---:|:---:|:---|
