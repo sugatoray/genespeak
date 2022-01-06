@@ -1,5 +1,3 @@
-# Classes
-
 # Converters
 
 ## Class **`Converter`**
