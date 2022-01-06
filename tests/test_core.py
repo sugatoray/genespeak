@@ -1,11 +1,11 @@
 
-
+# TODO: write proper tests
 def test_reconstruction():
     from genespeak import text_to_dna, dna_to_text
 
     texts = {
         "ascii": "A good life",
-        "utf-8": "A good life 鸞!..."
+        "utf-8": "A good life 👍!..."
     }
 
     schemas = ["ACGT", "GATC", "ATGC", ]
