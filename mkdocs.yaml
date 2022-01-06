@@ -368,6 +368,6 @@ nav:
     - converter: api/converters.md
     - dna_encoders: api/dna_encoders.md
     - text-strategies: api/text_strategies.md
-    #- utils: api/utils.md
+    - utils: api/utils.md
 
 ## @@ End NAVIGATION
