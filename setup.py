@@ -28,6 +28,7 @@ build_packages = [
     "twine",
     "setuptools",
     "build",
+    "pkginfo>=1.8.2",
 ]
 
 all_packages = base_packages

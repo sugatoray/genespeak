@@ -1,9 +1,15 @@
-.PHONY: black flake test types install interrogate build buildcheck pypi testpypi clean cleanall style check pipinstalltest this
+.PHONY: black flake test types install interrogate \
+		build buildcheck buildplus buildcheckplus getpackageinfo \
+		github pypi testpypi \
+		clean cleanall style check pipinstalltest \
+		this thispy thatpy
 
 PACKAGE_NAME := "genespeak"
 TESTPYPI_DOWNLOAD_URL := "https://test.pypi.org/simple/"
 PYPIPINSTALL := "python -m pip install -U --index-url"
 PIPINSTALL_PYPITEST := "$(PYPIPINSTALL) $(TESTPYPI_DOWNLOAD_URL)"
+PKG_INFO := "import pkginfo; dev = pkginfo.Develop('.'); print((dev.$${FIELD}))"
+
 
 black:
 	black --target-version py38 $(PACKAGE_NAME) tests setup.py
@@ -33,6 +39,20 @@ build: clean
 buildcheck: cleanall build
 	twine check dist/*
 
+buildplus: build getpackageinfo
+
+buildcheckplus: buildcheck getpackageinfo
+
+getpackageinfo:
+	$(eval PKG_NAME := $(shell FIELD="name" && python -c $(PKG_INFO);))
+	@echo PKG_NAME is: [$(PKG_NAME)]
+	$(eval PKG_VERSION := $(shell FIELD="version" && python -c $(PKG_INFO);))
+	@echo PKG_VERSION is: [$(PKG_VERSION)]
+
+github: buildplus
+	# creating a github release: https://cli.github.com/manual/gh_release_create
+	gh release create v$(PKG_VERSION) ./dist/$(PKG_NAME)-$(PKG_VERSION)*.*
+
 pypi: build
 	twine upload dist/*
 
@@ -56,3 +76,13 @@ pipinstalltest:
 this:
 	# example: make this VERSION="0.0.3"
 	@if [ $(VERSION) ]; then echo This is $(PACKAGE_NAME)==$(VERSION); else echo This is $(PACKAGE_NAME); fi;
+
+thispy:
+	#  example: https://lists.gnu.org/archive/html/help-make/2015-03/msg00011.html
+	@FIELD="name" && python -c $(PKG_INFO);
+	@FIELD="version" && python -c $(PKG_INFO);
+	$(eval FIELD := "name")
+	@echo FIELD is: [$(FIELD)]
+
+thatpy: thispy
+	@echo FIELD is: [$(FIELD)]
