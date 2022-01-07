@@ -1,8 +1,6 @@
 ---
-# package:
-#     version: 0.0.5
-#     banner:
-#         path: assets/images/genespeak_banner_01.png
+package:
+   name: genespeak
 ---
 
 ![genespeak-banner]({{ variables.package.banner.path }})
