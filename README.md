@@ -13,7 +13,7 @@
 [#github-license]: https://github.com/sugatoray/genespeak/blob/master/LICENSE
 [#pypi-package]: https://pypi.org/project/genespeak/
 [#conda-forge-package]: https://anaconda.org/conda-forge/genespeak
-[#docs-package]: https://koaning.github.io/genespeak/
+[#docs-package]: https://sugatoray.github.io/genespeak/
 <!--- BADGES: END --->
 
 A library to encode text as DNA and decode DNA to text.
@@ -51,7 +51,7 @@ See the quickstart guide here.
 
 [gh-colab-quickstart]: https://colab.research.google.com/github/sugatoray/genespeak/blob/master/notebooks/quickstart_genespeak.ipynb
 
-[gh-binder-quickstart]: https://mybinder.org/v2/gh/sugatoray/genespeak/master?labpath=notebooks%2Fquickstart.ipynb
+[gh-binder-quickstart]: https://mybinder.org/v2/gh/sugatoray/genespeak/master?labpath=notebooks%2Fquickstart_genespeak.ipynb
 
 ## Usage
 
