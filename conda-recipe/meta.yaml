@@ -1,0 +1,55 @@
+{% set name = "genespeak" %}
+{% set version = "0.0.7" %}
+
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/genespeak-{{ version }}.tar.gz
+  sha256: ec12783122d1f6307c6103b3e237f0539b948024f20be5c97713e4bc13ed9234
+
+build:
+  number: 0
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - pip
+    - python >=3.6
+    - pkginfo >=1.8.2
+    - setuptools
+    - build
+    - twine
+  run:
+    - python >=3.6
+
+test:
+  imports:
+    - genespeak
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/sugatoray/genespeak/
+  summary: A library to encode text as DNA and decode DNA to text.
+  license: MIT
+  license_file: LICENSE
+  description: |
+    GeneSpeak allows you to encode regular text as DNA using 
+    base-pairs (`A`, `T`, `G`, `C`) and convert back to the 
+    original text. Text encoding is done for both `ascii` and 
+    `utf-8` characters based on the `strategy` keyword argument.
+
+    PyPI: <https://pypi.org/project/genespeak/>
+
+  doc_url: https://sugatoray.github.io/genespeak/
+  dev_url: https://github.com/sugatoray/genespeak/
+
+extra:
+  recipe-maintainers:
+    - sugatoray
