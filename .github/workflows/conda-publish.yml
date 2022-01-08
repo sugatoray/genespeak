@@ -53,3 +53,9 @@ jobs:
         # Example dummy anaconda token: ab-a1b2c30-0a22-3800-4732-034b4c7724ce
         subDir: 'conda-recipe'
         AnacondaToken: ${{ secrets.CONDA_API_TOKEN }}
+      run: |
+        # This is necessary to avoid package upload failure
+        # with message: "anaconda_upload is not set"
+        echo "SETTING CONDARC FOR ANACONDA UPLOAD"
+        conda config --set anaconda_upload yes
+        cat ~/.condarc
