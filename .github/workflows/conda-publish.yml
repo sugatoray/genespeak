@@ -32,7 +32,7 @@ jobs:
       run: |
         conda info
         conda list
-    - name: publish-to-conda
+    - name: Publish-to-Conda
       uses: maxibor/conda-package-publish-action@v1.1
       with:
         # Example dummy anaconda token: ab-a1b2c30-0a22-3800-4732-034b4c7724ce
