@@ -1,7 +1,11 @@
 name: "MkDocs Publish Docs on GitHub Pages CI"
 on:
   # Manually trigger workflow
-  workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: Build MkDocs from Branch (Optional)
+        required: false
   # Trigger when a push happens 
   # to select branches.
   push:
@@ -11,6 +15,7 @@ on:
 
 env:
   PYTHON_VERSION: "3.7"
+  USER_SPECIFIED_BRANCH: ${{ github.event.inputs.branch }}
 
 jobs:
   deploy:
@@ -31,5 +36,15 @@ jobs:
         env:
           FONTAWESOME_KIT: ${{ secrets.FONTAWESOME_KIT }}
         run: |
+          # Check if user-provided branch exists and 
+          # then switch to that branch.
+          if [[ -z $(git branch --list "${{ env.USER_SPECIFIED_BRANCH }}") ]]; \
+            then (\
+              echo "Switching to branch: ${{ env.USER_SPECIFIED_BRANCH }}" && \
+              git checkout ${{ env.USER_SPECIFIED_BRANCH }} \
+            ); else USER_SPECIFIED_BRANCH=${GITHUB_REF##*/} ; fi && \
+          echo "Current Git Branch: ${USER_SPECIFIED_BRANCH}"
+          
+          # Begin Deploying MkDocs
           mkdocs gh-deploy --force
           mkdocs --version

@@ -7,7 +7,12 @@ name: publish_conda
 
 on:
   # Manually trigger workflow
-  workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      release-tag:
+        # The release tag input is not being used
+        description: Release Tag (Optional)
+        required: false
   # Trigger with new release
   release:
     types: [published]
