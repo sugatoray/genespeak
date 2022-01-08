@@ -1,6 +1,14 @@
 {% set data = load_setup_py_data() %}
-{% set name = data.get("name") %}
+{% set name = "genespeak" %}
 {% set version = data.get("version") %}
+
+## Note: 
+# The function "load_setup_py_data()" is used to read the 
+# metadata from the setup.py file. But using
+# data.get("name") currently does not work. 
+# So, hard-coding the package name is necessary.
+#
+# source: https://github.com/conda/conda-build/issues/1379#issuecomment-408221414
 
 
 package:
