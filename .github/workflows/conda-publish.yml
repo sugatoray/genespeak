@@ -40,6 +40,13 @@ jobs:
       run: |
         conda info
         conda list
+    - name: Set .condarc
+      shell: bash -l {0}
+      run: |
+        # This is necessary to avoid package upload failure
+        # with message: "anaconda_upload is not set"
+        conda config --set anaconda_upload yes
+        cat ~/.condarc
     - name: Publish-to-Conda
       uses: maxibor/conda-package-publish-action@v1.1
       with:
