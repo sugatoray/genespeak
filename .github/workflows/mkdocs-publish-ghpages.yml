@@ -1,5 +1,9 @@
 name: "MkDocs Publish Docs on GitHub Pages CI"
 on:
+  # Manually trigger workflow
+  workflow_dispatch
+  # Trigger when a push happens 
+  # to select branches.
   push:
     branches:
       - master

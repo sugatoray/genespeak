@@ -6,6 +6,9 @@
 name: publish_conda
 
 on:
+  # Manually trigger workflow
+  workflow_dispatch
+  # Trigger with new release
   release:
     types: [published]
 
