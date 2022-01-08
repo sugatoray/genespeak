@@ -1,0 +1,40 @@
+# This workflow publishes conda package to a 
+# conda channel under your own control
+# Docs:
+#   - https://github.com/maxibor/conda-package-publish-action
+#   - https://github.com/conda-incubator/setup-miniconda
+name: publish_conda
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  conda-publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup conda env
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        miniconda-version: "latest"
+        auto-update-conda: true
+        python-version: 3.9
+        conda-build-version: 3.21.7
+        channels: conda-forge,bioconda
+    - name: Bash
+      shell: bash -l {0}
+      run: |
+        conda info
+        conda list
+    - name: PowerShell Core
+      shell: pwsh
+      run: |
+        conda info
+        conda list
+    - name: Publish-to-Conda
+      uses: maxibor/conda-package-publish-action@v1.1
+      with:
+        # Example dummy anaconda token: ab-a1b2c30-0a22-3800-4732-034b4c7724ce
+        subDir: 'conda-recipe'
+        AnacondaToken: ${{ secrets.CONDA_API_TOKEN }}
