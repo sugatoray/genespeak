@@ -1,6 +1,8 @@
 # GeneSpeak
 
-![genespeak-banner](docs/assets/images/genespeak_banner_01.png)
+![genespeak-banner][#repo-banner]
+
+[#repo-banner]: docs/assets/images/genespeak_banner_01.png
 
 <!--- BADGES: START --->
 [![GitHub - License](https://img.shields.io/github/license/sugatoray/genespeak?logo=github&style=flat&color=green)][#github-license]
@@ -30,13 +32,13 @@ You can install the library via `pip` or `conda`.
 
 **Install with pip**
 
-```
+```sh
 pip install genespeak
 ```
 
 **Install with conda**
 
-```
+```sh
 conda install -c conda-forge genespeak
 ```
 

@@ -1,6 +1,38 @@
+import re
 import pathlib
 from setuptools import setup, find_packages
 
+
+BANNER_PATH_PAT = r"\[\#repo-banner\]\:\s+(?P<path>.*)\s*\n"
+BANNER_PATH_PAT = re.compile(BANNER_PATH_PAT)
+CONTENT_PATH_PREFIX = r"https://raw.githubusercontent.com/sugatoray/genespeak/master/"
+
+def update_banner_path(readme_path: str="README.md") -> str:
+    """Converts the relative path of the banner into a parmalink.
+    
+    The banner is made avilable in the readme file as follows:
+
+    --------------------------------------------------------------
+
+    ![genespeak-banner][#repo-banner]
+
+    [#repo-banner]: docs/assets/images/genespeak_banner_01.png
+
+    --------------------------------------------------------------
+
+    This function replaces the target line's <path> value ([#repo-banner]: <path>)
+    with CONTENT_PATH_PREFIX + <path>.
+
+    CONTENT_PATH_PREFIX = r"https://raw.githubusercontent.com/sugatoray/genespeak/master/"
+
+    """
+
+    text = pathlib.Path("README.md").read_text()
+    res = BANNER_PATH_PAT.search(text)
+    replace_with = CONTENT_PATH_PREFIX + BANNER_PATH_PAT.search(text).groupdict().get("path")
+    mod_text = BANNER_PATH_PAT.sub(replace_with, text)
+
+    return mod_text
 
 base_packages = []
 
@@ -35,9 +67,11 @@ all_packages = base_packages
 dev_packages = all_packages + docs_packages + test_packages + build_packages
 
 
+README: str = update_banner_path(readme_path="README.md")
+
 setup(
     name="genespeak",
-    version="0.0.7",
+    version="0.0.8",
     author="Sugato Ray",
     author_email='sugatoray.dev@gmail.com',
     python_requires='>=3.6',
@@ -47,7 +81,7 @@ setup(
         exclude = ["notebooks", "docs", "test*"]
     ),
     description="A library to encode text as DNA and decode DNA to text.",
-    long_description=pathlib.Path("README.md").read_text(),
+    long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/sugatoray/genespeak/",
     project_urls={

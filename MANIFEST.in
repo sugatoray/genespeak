@@ -21,3 +21,4 @@ recursive-include requirements *.txt
 recursive-exclude tests *
 recursive-exclude docs *
 recursive-exclude site *
+recursive-exclude conda-recipe *
