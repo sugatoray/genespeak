@@ -7,9 +7,10 @@ BANNER_PATH_PAT = r"\[\#repo-banner\]\:\s+(?P<path>.*)\s*\n"
 BANNER_PATH_PAT = re.compile(BANNER_PATH_PAT)
 CONTENT_PATH_PREFIX = r"https://raw.githubusercontent.com/sugatoray/genespeak/master/"
 
-def update_banner_path(readme_path: str="README.md") -> str:
+
+def update_banner_path(readme_path: str = "README.md") -> str:
     """Converts the relative path of the banner into a parmalink.
-    
+
     The banner is made avilable in the readme file as follows:
 
     --------------------------------------------------------------
@@ -29,7 +30,7 @@ def update_banner_path(readme_path: str="README.md") -> str:
 
     text = pathlib.Path("README.md").read_text()
     res = BANNER_PATH_PAT.search(text)
-    replace_with = CONTENT_PATH_PREFIX + BANNER_PATH_PAT.search(text).groupdict().get("path")
+    replace_with = r"[#repo-banner]: " + CONTENT_PATH_PREFIX + res.groupdict().get("path") + '\n\n'
     mod_text = BANNER_PATH_PAT.sub(replace_with, text)
 
     return mod_text
