@@ -12,15 +12,14 @@
 [![Conda (channel only)](https://img.shields.io/conda/vn/conda-forge/genespeak?logo=anaconda&style=flat&color=orange)][#conda-forge-package]
 [![Conda Recipe](https://img.shields.io/static/v1?logo=conda-forge&style=flat&color=green&label=recipe&message=genespeak)][#conda-forge-feedstock] 
 [![Docs - GitHub.io](https://img.shields.io/static/v1?logo=github&style=flat&color=pink&label=docs&message=genespeak)][#docs-package]
-[![CodeFactor](https://www.codefactor.io/repository/github/sugatoray/genespeak/badge)](https://www.codefactor.io/repository/github/sugatoray/genespeak)
+[![CodeFactor](https://www.codefactor.io/repository/github/sugatoray/genespeak/badge)][#codefactor-package]
 
 [#github-license]: https://github.com/sugatoray/genespeak/blob/master/LICENSE
 [#pypi-package]: https://pypi.org/project/genespeak/
 [#conda-forge-package]: https://anaconda.org/conda-forge/genespeak
 [#conda-forge-feedstock]: https://anaconda.org/conda-forge/genespeak-feedstock
 [#docs-package]: https://sugatoray.github.io/genespeak/
-
-https://img.shields.io/badge/recipe-genespeak-green.svg
+[#codefactor-package]: https://www.codefactor.io/repository/github/sugatoray/genespeak
 <!--- BADGES: END --->
 
 A library to encode text as DNA and decode DNA to text.
