@@ -3,3 +3,4 @@ genespeak>=0.0.8
 pyperclip>=1.8.2
 #pyautogui>=0.9.53
 pip>=21.3.1
+PyQt4
