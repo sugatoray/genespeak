@@ -2,13 +2,17 @@
 		build buildcheck buildplus buildcheckplus getpackageinfo \
 		github pypi testpypi \
 		clean cleanall style check pipinstalltest \
+		streamlit_demo streamlit_run \
 		this thispy thatpy
+
 
 PACKAGE_NAME := "genespeak"
 TESTPYPI_DOWNLOAD_URL := "https://test.pypi.org/simple/"
 PYPIPINSTALL := "python -m pip install -U --index-url"
 PIPINSTALL_PYPITEST := "$(PYPIPINSTALL) $(TESTPYPI_DOWNLOAD_URL)"
 PKG_INFO := "import pkginfo; dev = pkginfo.Develop('.'); print((dev.$${FIELD}))"
+STREAMLIT_DEMO_APP := "./apps/demo/streamlit_app/app.py"
+STREAMLIT_PORT := 12321
 
 
 black:
@@ -72,6 +76,12 @@ check: clean black flake interrogate test clean
 
 pipinstalltest:
 	@if [ $(VERSION) ]; then $(PIPINSTALL_PYPITEST) $(PACKAGE_NAME)==$(VERSION); else $(PIPINSTALL_PYPITEST) $(PACKAGE_NAME); fi;
+
+streamlit_demo:
+	streamlit run $(STREAMLIT_DEMO_APP) --server.port=8051 &
+
+streamlit_run:
+	streamlit run $(STREAMLIT_DEMO_APP) --server.port=$(STREAMLIT_PORT) &
 
 this:
 	# example: make this VERSION="0.0.3"

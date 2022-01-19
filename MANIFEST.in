@@ -22,3 +22,10 @@ recursive-exclude tests *
 recursive-exclude docs *
 recursive-exclude site *
 recursive-exclude conda-recipe *
+recursive-exclude apps *
+recursive-exclude .streamlit *
+
+exclude .flake8
+exclude .gitignore
+exclude .pre-commit-config.yaml
+exclude mkdocs.yml
