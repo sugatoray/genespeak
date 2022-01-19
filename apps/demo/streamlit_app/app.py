@@ -2,7 +2,7 @@
 
 import os
 import streamlit as st
-import pyautogui
+# import pyautogui
 from utils import setup_sidebar, setup_preamble, setup_app
 
 st.header("GeneSpeak - Demo App")
@@ -17,11 +17,11 @@ with placeholder.container():
     setup_app(options)
 
 if buttons["reset"] or buttons["refresh"]:
-    if os.environ.get("DISPLAY") is not None:
-        try:
-            pyautogui.hotkey("ctrl", "F5")
-        except Exception as e:
-            st.error(e)
-    else:
-        placeholder.empty()
-        st.warning("Refresh the webpage manually!")
+    # if os.environ.get("DISPLAY") is not None:
+    #     try:
+    #         pyautogui.hotkey("ctrl", "F5")
+    #     except Exception as e:
+    #         st.error(e)
+    # else:
+    placeholder.empty()
+    st.warning("Refresh the webpage manually!")
