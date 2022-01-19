@@ -18,7 +18,10 @@ with placeholder.container():
 
 if buttons["reset"] or buttons["refresh"]:
     if os.environ.get("DISPLAY") is not None:
-        pyautogui.hotkey("ctrl", "F5")
+        try:
+            pyautogui.hotkey("ctrl", "F5")
+        except Exception as e:
+            st.error(e)
     else:
         placeholder.empty()
         st.warning("Refresh the webpage manually!")
