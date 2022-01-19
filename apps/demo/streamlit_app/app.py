@@ -1,5 +1,6 @@
 # GeneSpeak demo app
 
+import os
 import streamlit as st
 import pyautogui
 from utils import setup_sidebar, setup_preamble, setup_app
@@ -16,4 +17,8 @@ with placeholder.container():
     setup_app(options)
 
 if buttons["reset"] or buttons["refresh"]:
-    pyautogui.hotkey("ctrl", "F5")
+    if os.environ.get("DISPLAY") is not None:
+        pyautogui.hotkey("ctrl", "F5")
+    else:
+        placeholder.empty()
+        st.warning("Refresh the webpage manually!")
