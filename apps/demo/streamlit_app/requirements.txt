@@ -1,4 +1,4 @@
-streamlit>=1.4.0
+streamlit
 genespeak>=0.8.0
 pyperclip>=1.8.2
 pyautogui>=0.9.53
