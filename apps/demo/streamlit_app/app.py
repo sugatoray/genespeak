@@ -2,12 +2,12 @@
 
 import os
 import streamlit as st
-# import pyautogui
+import pyautogui
 from utils import setup_sidebar, setup_preamble, setup_app, is_streamlit_cloud
 
 ## To emulate streamlit cloud specific app
 ## restrictions uncomment the following line
-# os.environ["ST_IS_STREAMLIT_CLOUD"] = "1"
+# os.environ["ST_IS_STREAMLIT_CLOUD"] = "0"
 
 st.header("GeneSpeak - Demo App")
 
@@ -22,11 +22,11 @@ with placeholder.container():
 
 if buttons["reset"] or buttons["refresh"]:
     if not is_streamlit_cloud():
-        # if os.environ.get("DISPLAY") is not None:
-        #     try:
-        #         pyautogui.hotkey("ctrl", "F5")
-        #     except Exception as e:
-        #         st.error(e)
+        if os.environ.get("DISPLAY") is not None:
+            try:
+                pyautogui.hotkey("ctrl", "F5")
+            except Exception as e:
+                st.error(e)
         pass
     else:
         placeholder.empty()
