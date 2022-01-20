@@ -64,3 +64,19 @@ README.md               # readme file explaining anything that needs some docume
    secondaryBackgroundColor="#f0f2f6"
    font="sans serif"
    ```
+
+1. How to get installed `gtk` version on linux?
+
+   Run this command.
+
+   ```sh
+   dpkg -s libgtk-3-0|grep '^Version'
+   ```
+
+   Or,
+
+   ```sh
+   gtk-launch --version
+   ```
+
+   Source: https://stackoverflow.com/a/13098607/8474894
