@@ -1,5 +1,8 @@
 # Streamlit Demo App: GeneSpeak 🧬
 
+Short URL: https://tinyurl.com/genespeak-demo
+App URL: https://share.streamlit.io/sugatoray/genespeak/master/apps/demo/streamlit_app/app.py
+
 ## Folder Structure
 
 The following folder/files are used for this app.

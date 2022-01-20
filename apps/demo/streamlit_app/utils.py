@@ -22,14 +22,15 @@ class Defaults:
     CONVERSION_SCHEMA: str = DEFAULT_SCHEMA
     CONVERSION_SCHEMAS: Tuple[str] = tuple(''.join(i) for i in itertools.permutations(DEFAULT_SCHEMA, 4))
     GENESPEAK_BANNER_URL: str = r"https://raw.githubusercontent.com/sugatoray/genespeak/master/docs/assets/images/genespeak_banner_01.png"
+    APP_URL: str = r"https://share.streamlit.io/sugatoray/genespeak/master/apps/demo/streamlit_app/app.py"
+    APP_URL_SHORT: str = r"https://tinyurl.com/genespeak-demo"
 
 
 def add_about_section():
     """Adds an About section to the app."""
 
     st.write("## ℹ️ About")
-
-    st.info(dedent("""
+    st.info(dedent(f"""
         This web [app][#streamlit-app] is maintained by [Sugato Ray][#linkedin].
         You can follow me on social media:
 
@@ -40,8 +41,9 @@ def add_about_section():
         [#linkedin]: https://www.linkedin.com/in/sugatoray/
         [#twitter]: https://twitter.com/sugatoray
         [#github]: https://github.com/sugatoray
-        [#streamlit-app]: https://share.streamlit.io/sugatoray/genespeak/master/apps/demo/streamlit_app/app.py
+        [#streamlit-app]: {Defaults.APP_URL}
 
+        Short URL: {Defaults.APP_URL_SHORT}
         """)
     )
 
