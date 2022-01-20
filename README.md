@@ -1,4 +1,4 @@
-# GeneSpeak
+# GeneSpeak 🧬
 
 ![genespeak-banner][#repo-banner]
 
@@ -32,7 +32,7 @@ original text. Text encoding is done for both `ascii` and
 `utf-8` characters based on the `strategy` keyword argument.
 The encoding scheme could be any combination of `A`, `T`, `G`, `C`.
 
-## Installation
+## Installation 📜
 
 You can install the library via `pip` or `conda`.
 
@@ -48,7 +48,7 @@ pip install genespeak
 conda install -c conda-forge genespeak
 ```
 
-## Quickstart
+## Quickstart ⚡
 
 See the quickstart guide here.
 
@@ -64,7 +64,13 @@ See the quickstart guide here.
 
 [gh-sagemaker-studiolab-quickstart]: https://studiolab.sagemaker.aws/import/github/sugatoray/genespeak/blob/master/notebooks/quickstart_genespeak.ipynb
 
-## Usage
+## Demo App ✨
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)][#demo-streamlit-app]
+
+You can play around with GeneSpeak in this streamlit app: https://tinyurl.com/genespeak-demo
+
+## Usage ✋
 
 ```python
 import genespeak as gp
@@ -91,19 +97,19 @@ Encoded DNA: TACATCTTTCGATCGATCGGACAATTTGTCGGTGACTCGATCTAACAT
 Decoded Text: Hello World!
 ```
 
-## Documentation
+## Documentation 📚
 
 [![Docs - GitHub.io](https://img.shields.io/static/v1?logo=github&style=flat&color=pink&label=docs&message=genespeak)][#docs-package]
 
 The `genespeak` docs are maintained [here][#docs-package].
 
-## License
+## License 📑
 
 [![GitHub - License](https://img.shields.io/github/license/sugatoray/genespeak?logo=github&style=flat&color=green)][#github-license]
 
 The library is available under [MIT license][#github-license].
 
-## Citation
+## Citation 🔖
 
 You may cite this library as follows.
 
