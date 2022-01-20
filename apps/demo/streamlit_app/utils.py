@@ -1,10 +1,11 @@
+import os
 import streamlit as st
 import itertools
 import pyperclip
 from genespeak import text_to_dna, dna_to_text
 from textwrap import dedent
 from dataclasses import dataclass
-from typing import Tuple, Dict
+from typing import Tuple, Dict, Optional
 
 
 
@@ -126,6 +127,14 @@ def setup_preamble():
 
 
 def setup_app(options: Dict):
+    os.environ["ST_IS_STREAMLIT_CLOUD"] = "1"
+    on_st_cloud = is_streamlit_cloud()
+    # Determine conversion direction (Text to DNA) or (DNA to Text)
+    if options["convert_to"] == "DNA":
+        _from, _to = "TEXT", "DNA"
+    elif options["convert_to"] == "TEXT":
+        _from, _to = "DNA", "TEXT"
+
     # Determine default text based on schema: ascii or utf-8
     text_value = ""
     if options["strategy"] == "ascii":
@@ -133,19 +142,22 @@ def setup_app(options: Dict):
     elif options["strategy"] == "utf-8":
         text_value = Defaults.TEXT_INPUT_UTF8
 
+    if _to == "TEXT":
+        text_value = text_to_dna(text_value, schema=options["schema"], strategy=options["strategy"])
+
     # Get Input (X) from User
     if options["text_input_type"] == "Text Field":
-        X = st.text_input("Text Input", value=text_value)
+        X = st.text_input(f"{_from} Input *as string*", value=text_value)
     else:
-        X = st.text_area("Text Input", value=text_value)
+        X = st.text_area(f"{_from} Input as string", value=text_value)
 
     # Evaluate Output (Y) based on Input-type,
     # conversion schema and strategy.
     if options["convert_to"] == "DNA":
-        _from, _to = "TEXT", "DNA"
+        # _from, _to = "TEXT", "DNA"
         Y = text_to_dna(text=X, schema=Defaults.CONVERSION_SCHEMA, strategy=options["strategy"])
     elif options["convert_to"] == "TEXT":
-        _from, _to = "DNA", "TEXT"
+        # _from, _to = "DNA", "TEXT"
         if X:
             diff = set(X.upper()) - set(list("ACGT"))
             if diff:
@@ -156,27 +168,66 @@ def setup_app(options: Dict):
 
     # Display User Input (X)
     with st.expander("User Input 👇", expanded=True):
-        col1, col2 = st.columns([4, 1])
-        with col1:
-            if _from == "TEXT":
-                st.write(f"{X}")
-            else:
-                st.write(f"`{X}`")
+        if not on_st_cloud:
+            col1, col2 = st.columns([4, 1])
+            with col1:
+                show_input(options, X)
 
-        with col2:
-            st.button("Copy Input", help="Click to copy input to clipboard", on_click=pyperclip.copy(X))
+            with col2:
+                st.button("Copy Input", help="Click to copy input to clipboard", on_click=pyperclip.copy(X))
+        else:
+            show_input(options, X)
 
     # Display Generated Output (Y)
+    st.success("### Output 🎁")
+    payload = {
+        "input": X,
+        "output": Y,
+    }
     with st.expander(f"Output: {_from} ➡️ {_to} 👇", expanded=True):
-        col1, col2 = st.columns([4, 1])
-        with col1:
-            if _to == "DNA":
-                st.write(dedent(f"""
-                `{Y}`
-                """))
-            else:
-                st.write(dedent(f"""
-                {Y}
-                """))
-        with col2:
-            st.button("Copy Result", help="Click to copy result to clipboard", on_click=pyperclip.copy(Y))
+        if not on_st_cloud:
+            col1, col2 = st.columns([4, 1])
+            with col1:
+                show_output(options, Y)
+            with col2:
+                st.button(
+                    label="Copy Result",
+                    help="Click to copy result to clipboard",
+                    on_click=pyperclip.copy(Y)
+                )
+        else:
+            show_output(options, Y)
+        with st.container():
+            st.info("JSON Output")
+            st.json(payload)
+
+
+def show_input(options, X):
+    if options["convert_to"] == "DNA":
+        st.write(f"{X}")
+    else:
+        st.write(f"`{X}`")
+
+def show_output(options, Y):
+    if options["convert_to"] == "DNA":
+        st.write(f"{Y}")
+    else:
+        st.write(f"`{Y}`")
+
+def transfer_payload(payload: Dict, mode: str="json", key: Optional[str]=None):
+    """Function to associate with a button's on-click feature.
+
+    This either writes a json (from the input dict ``p``) to the app,
+    or copies a certain content from the json by a key.
+    """
+    if mode == "json":
+        st.json(payload)
+    else:
+        if key is not None:
+            pyperclip.copy(payload.get(key))
+
+def is_streamlit_cloud(watchvariable: str="ST_IS_STREAMLIT_CLOUD") -> bool:
+    """If running in the Streamlit Cloud, set environment variable
+    (the same as ``watchvariable``) to 1.
+    """
+    return bool(os.environ.get(watchvariable, "0") == "1")
