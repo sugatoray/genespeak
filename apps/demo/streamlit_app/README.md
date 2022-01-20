@@ -1,4 +1,4 @@
-# Streamlit Demo App: GeneSpeak
+# Streamlit Demo App: GeneSpeak 🧬
 
 ## Folder Structure
 

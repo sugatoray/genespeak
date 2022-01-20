@@ -9,7 +9,7 @@ from utils import setup_sidebar, setup_preamble, setup_app, is_streamlit_cloud
 ## restrictions uncomment the following line
 # os.environ["ST_IS_STREAMLIT_CLOUD"] = "0"
 
-st.header("GeneSpeak - Demo App")
+st.header("GeneSpeak - Demo App 🧬")
 
 setup_preamble()
 
