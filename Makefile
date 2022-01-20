@@ -78,9 +78,21 @@ pipinstalltest:
 	@if [ $(VERSION) ]; then $(PIPINSTALL_PYPITEST) $(PACKAGE_NAME)==$(VERSION); else $(PIPINSTALL_PYPITEST) $(PACKAGE_NAME); fi;
 
 streamlit_demo:
+	# Note: To run the following command the port 8051 needs to be available.
+	#       If somehow, a previously running streamlit session did not exit
+	#		properly, you need to manually and forcibly stop it.
+	#       Stop an already running streamlit server:
+	#
+	#       sudo fuser -k 8051/tcp
 	streamlit run $(STREAMLIT_DEMO_APP) --server.port=8051 &
 
 streamlit_run:
+	# Note: To run the following command the port 8051 needs to be available.
+	#       If somehow, a previously running streamlit session did not exit
+	#		properly, you need to manually and forcibly stop it.
+	#       Stop an already running streamlit server:
+	#
+	#       sudo fuser -k $(STREAMLIT_PORT)/tcp
 	streamlit run $(STREAMLIT_DEMO_APP) --server.port=$(STREAMLIT_PORT) &
 
 this:

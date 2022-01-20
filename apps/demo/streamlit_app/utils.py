@@ -183,7 +183,15 @@ def setup_app(options: Dict):
     payload = {
         "input": X,
         "output": Y,
+        "metadata": {
+            "schema": options["schema"],
+            "strategy": options["strategy"],
+            "convert_to": options["convert_to"],
+        },
     }
+
+    "Test text here."
+
     with st.expander(f"Output: {_from} ➡️ {_to} 👇", expanded=True):
         if not on_st_cloud:
             col1, col2 = st.columns([4, 1])
