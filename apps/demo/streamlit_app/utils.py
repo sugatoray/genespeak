@@ -156,7 +156,7 @@ def setup_app(options: Dict):
     # Evaluate Output (Y) based on Input-type,
     # conversion schema and strategy.
     if options["convert_to"] == "DNA":
-        Y = text_to_dna(text=X, schema=Defaults.CONVERSION_SCHEMA, strategy=options["strategy"])
+        Y = text_to_dna(text=X, schema=options["schema"], strategy=options["strategy"])
     elif options["convert_to"] == "TEXT":
         if X:
             diff = set(X.upper()) - set(list(Defaults.CONVERSION_SCHEMA))
@@ -164,7 +164,7 @@ def setup_app(options: Dict):
                 st.error("Input is not valid dna to convert from.")
                 st.stop()
             else:
-                Y = dna_to_text(dna=X, schema=Defaults.CONVERSION_SCHEMA, strategy=options["strategy"])
+                Y = dna_to_text(dna=X, schema=options["schema"], strategy=options["strategy"])
 
     # Display User Input (X)
     with st.expander("User Input 👇", expanded=True):
