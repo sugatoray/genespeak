@@ -127,7 +127,7 @@ def setup_preamble():
 
 
 def setup_app(options: Dict):
-    os.environ["ST_IS_STREAMLIT_CLOUD"] = "1"
+
     on_st_cloud = is_streamlit_cloud()
     # Determine conversion direction (Text to DNA) or (DNA to Text)
     if options["convert_to"] == "DNA":
