@@ -48,3 +48,19 @@ README.md               # readme file explaining anything that needs some docume
    See the docs here: [Streamlit Cloud - Deploy an App][#stcloud-app-deploy]
 
    [#stcloud-app-deploy]: https://docs.streamlit.io/streamlit-cloud/get-started/deploy-an-app#apt-get-dependencies
+
+1. If you have multiple apps in a repository, how to add app-specific streamlit theme settings?
+
+   Add a `.streamlit` folder in the same location as the `app.py` file, and create a file `config.toml` inside the folder `.streamlit`. While running the app, just make sure the `streamlit run app.py` command is issued from the directory where the app resides.
+
+   A sample `.streamlit/config.toml` file.
+
+   ```toml
+   [theme]
+   base="light"
+   primaryColor="#4baaff"
+   textColor="#31333f"
+   backgroundColor="#ffffff"
+   secondaryBackgroundColor="#f0f2f6"
+   font="sans serif"
+   ```
