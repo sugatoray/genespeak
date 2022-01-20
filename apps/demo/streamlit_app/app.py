@@ -2,7 +2,7 @@
 
 import os
 import streamlit as st
-import pyautogui
+# import pyautogui # This does not work on Streamlit Cloud
 from utils import setup_sidebar, setup_preamble, setup_app, is_streamlit_cloud
 
 ## To emulate streamlit cloud specific app
@@ -21,13 +21,13 @@ with placeholder.container():
     setup_app(options)
 
 if buttons["reset"] or buttons["refresh"]:
-    if not is_streamlit_cloud():
-        if os.environ.get("DISPLAY") is not None:
-            try:
-                pyautogui.hotkey("ctrl", "F5")
-            except Exception as e:
-                st.error(e)
-        pass
-    else:
-        placeholder.empty()
-        st.warning("Refresh the webpage manually!")
+    # if not is_streamlit_cloud():
+    #     # if os.environ.get("DISPLAY") is not None:
+    #     #     try:
+    #     #         pyautogui.hotkey("ctrl", "F5")
+    #     #     except Exception as e:
+    #     #         st.error(e)
+    #     pass
+    # else:
+    placeholder.empty()
+    st.warning("Refresh the webpage manually!")
