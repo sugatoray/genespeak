@@ -149,19 +149,17 @@ def setup_app(options: Dict):
 
     # Get Input (X) from User
     if options["text_input_type"] == "Text Field":
-        X = st.text_input(f"{_from} Input *as string*", value=text_value)
+        X = st.text_input(f"{_from} Input as string", value=text_value)
     else:
         X = st.text_area(f"{_from} Input as string", value=text_value)
 
     # Evaluate Output (Y) based on Input-type,
     # conversion schema and strategy.
     if options["convert_to"] == "DNA":
-        # _from, _to = "TEXT", "DNA"
         Y = text_to_dna(text=X, schema=Defaults.CONVERSION_SCHEMA, strategy=options["strategy"])
     elif options["convert_to"] == "TEXT":
-        # _from, _to = "DNA", "TEXT"
         if X:
-            diff = set(X.upper()) - set(list("ACGT"))
+            diff = set(X.upper()) - set(list(Defaults.CONVERSION_SCHEMA))
             if diff:
                 st.error("Input is not valid dna to convert from.")
                 st.stop()
@@ -212,9 +210,9 @@ def show_input(options, X):
 
 def show_output(options, Y):
     if options["convert_to"] == "DNA":
-        st.write(f"{Y}")
-    else:
         st.write(f"`{Y}`")
+    else:
+        st.write(f"{Y}")
 
 def transfer_payload(payload: Dict, mode: str="json", key: Optional[str]=None):
     """Function to associate with a button's on-click feature.
