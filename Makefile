@@ -55,6 +55,10 @@ getpackageinfo:
 
 github: buildplus
 	# creating a github release: https://cli.github.com/manual/gh_release_create
+	gh release create v$(PKG_VERSION)
+
+githubplus: buildplus
+	# creating a github release: https://cli.github.com/manual/gh_release_create
 	gh release create v$(PKG_VERSION) ./dist/$(PKG_NAME)-$(PKG_VERSION)*.*
 
 pypi: build
