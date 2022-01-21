@@ -59,12 +59,18 @@ See the quickstart guide here.
 | Colab | [![Colab Badge](https://colab.research.google.com/assets/colab-badge.svg)][gh-colab-quickstart] |
 | Binder | [![Binder](https://mybinder.org/badge_logo.svg)][gh-binder-quickstart] |
 | SageMaker StudioLab | [![Open in SageMaker Studio Lab](https://studiolab.sagemaker.aws/studiolab.svg)][gh-sagemaker-studiolab-quickstart] |
+| Deepnote | [![View in Deepnote](https://deepnote.com/static/buttons/view-in-deepnote.svg)][#gh-deepnote-quickstart] |
+| Kaggle | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)][#gh-kaggle-quickstart] |
 
 [gh-colab-quickstart]: https://colab.research.google.com/github/sugatoray/genespeak/blob/master/notebooks/quickstart_genespeak.ipynb
 
 [gh-binder-quickstart]: https://mybinder.org/v2/gh/sugatoray/genespeak/master?labpath=notebooks%2Fquickstart_genespeak.ipynb
 
 [gh-sagemaker-studiolab-quickstart]: https://studiolab.sagemaker.aws/import/github/sugatoray/genespeak/blob/master/notebooks/quickstart_genespeak.ipynb
+
+[#gh-deepnote-quickstart]: https://deepnote.com/viewer/github/sugatoray/genespeak/blob/master/notebooks/quickstart_genespeak.ipynb
+
+[#gh-kaggle-quickstart]: https://kaggle.com/kernels/welcome?src=https://github.com/sugatoray/genespeak/blob/master/notebooks/quickstart_genespeak.ipynb
 
 ## Demo App ✨
 
