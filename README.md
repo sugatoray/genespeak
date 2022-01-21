@@ -59,7 +59,7 @@ See the quickstart guide here.
 | Colab | [![Colab Badge](https://colab.research.google.com/assets/colab-badge.svg)][gh-colab-quickstart] |
 | Binder | [![Binder](https://mybinder.org/badge_logo.svg)][gh-binder-quickstart] |
 | SageMaker StudioLab | [![Open in SageMaker Studio Lab](https://studiolab.sagemaker.aws/studiolab.svg)][gh-sagemaker-studiolab-quickstart] |
-| Deepnote | [![View in Deepnote](https://deepnote.com/static/buttons/view-in-deepnote.svg)][#gh-deepnote-quickstart] |
+| Deepnote | [![View in Deepnote](https://deepnote.com/static/buttons/view-in-deepnote-small.svg)][#gh-deepnote-quickstart] |
 | Kaggle | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)][#gh-kaggle-quickstart] |
 
 [gh-colab-quickstart]: https://colab.research.google.com/github/sugatoray/genespeak/blob/master/notebooks/quickstart_genespeak.ipynb
