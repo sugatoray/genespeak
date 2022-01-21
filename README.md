@@ -14,6 +14,7 @@
 [![Docs - GitHub.io](https://img.shields.io/static/v1?logo=github&style=flat&color=pink&label=docs&message=genespeak)][#docs-package]
 [![CodeFactor](https://www.codefactor.io/repository/github/sugatoray/genespeak/badge)][#codefactor-package]
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)][#demo-streamlit-app]
+[![DOI](https://zenodo.org/badge/442934986.svg)][#doi-zenodo]
 
 [#github-license]: https://github.com/sugatoray/genespeak/blob/master/LICENSE
 [#pypi-package]: https://pypi.org/project/genespeak/
@@ -22,6 +23,7 @@
 [#docs-package]: https://sugatoray.github.io/genespeak/
 [#codefactor-package]: https://www.codefactor.io/repository/github/sugatoray/genespeak
 [#demo-streamlit-app]: https://share.streamlit.io/sugatoray/genespeak/master/apps/demo/streamlit_app/app.py
+[#doi-zenodo]: https://zenodo.org/badge/latestdoi/442934986
 <!--- BADGES: END --->
 
 A library to encode text as DNA and decode DNA to text.
@@ -110,6 +112,8 @@ The `genespeak` docs are maintained [here][#docs-package].
 The library is available under [MIT license][#github-license].
 
 ## Citation 🔖
+
+[![DOI](https://zenodo.org/badge/442934986.svg)][#doi-zenodo]
 
 You may cite this library as follows.
 

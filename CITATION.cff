@@ -6,10 +6,10 @@ authors:
 - family-names: "Ray"
   given-names: "Sugato"
   orcid: "https://orcid.org/0000-0002-9886-2324"
-title: "genespeak"
+title: "GeneSpeak - A library to encode text as DNA and decode DNA to text"
 # version: 1.0.0
-# doi: 10.5281/zenodo.1234
-# date-released: 2021-09-05
+doi: 10.5281/zenodo.5885777
+date-released: 2022-01-05
 url: "https://github.com/sugatoray/genespeak"
 
 #### Citations file related resources:
