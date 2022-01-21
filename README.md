@@ -21,6 +21,7 @@
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=ncloc)][#gh-sonarcloud-repo]
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=sqale_index)][#gh-sonarcloud-repo]
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=vulnerabilities)][#gh-sonarcloud-repo]
+[![OSSF CodeQL](https://github.com/sugatoray/genespeak/actions/workflows/scorecards-analysis.yml/badge.svg)][#gh-ossf-codeql-repo]
 
 [#github-license]: https://github.com/sugatoray/genespeak/blob/master/LICENSE
 [#pypi-package]: https://pypi.org/project/genespeak/
@@ -31,6 +32,7 @@
 [#demo-streamlit-app]: https://share.streamlit.io/sugatoray/genespeak/master/apps/demo/streamlit_app/app.py
 [#doi-zenodo]: https://zenodo.org/badge/latestdoi/442934986
 [#gh-sonarcloud-repo]: https://sonarcloud.io/summary/new_code?id=sugatoray_genespeak
+[#gh-ossf-codeql-repo]: https://github.com/sugatoray/genespeak/actions/workflows/scorecards-analysis.yml
 <!--- BADGES: END --->
 
 A library to encode text as DNA and decode DNA to text.
