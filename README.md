@@ -15,7 +15,12 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/sugatoray/genespeak/badge)][#codefactor-package]
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)][#demo-streamlit-app]
 [![DOI](https://zenodo.org/badge/442934986.svg)][#doi-zenodo]
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=alert_status)][#gh-sonarcloud-status]
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=alert_status)][#gh-sonarcloud-repo]
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=security_rating)][#gh-sonarcloud-repo]
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=sqale_rating)][#gh-sonarcloud-repo]
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=ncloc)][#gh-sonarcloud-repo]
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=sqale_index)][#gh-sonarcloud-repo]
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=vulnerabilities)][#gh-sonarcloud-repo]
 
 [#github-license]: https://github.com/sugatoray/genespeak/blob/master/LICENSE
 [#pypi-package]: https://pypi.org/project/genespeak/
@@ -25,7 +30,7 @@
 [#codefactor-package]: https://www.codefactor.io/repository/github/sugatoray/genespeak
 [#demo-streamlit-app]: https://share.streamlit.io/sugatoray/genespeak/master/apps/demo/streamlit_app/app.py
 [#doi-zenodo]: https://zenodo.org/badge/latestdoi/442934986
-[#gh-sonarcloud-status]: https://sonarcloud.io/summary/new_code?id=sugatoray_genespeak
+[#gh-sonarcloud-repo]: https://sonarcloud.io/summary/new_code?id=sugatoray_genespeak
 <!--- BADGES: END --->
 
 A library to encode text as DNA and decode DNA to text.
