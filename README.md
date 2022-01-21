@@ -120,8 +120,11 @@ You may cite this library as follows.
 ```bibtex
 @software{ray2022genespeak,
     author = {Ray, Sugato},
-    title = {{genespeak} - A library to encode text as DNA and decode DNA to text},
-    url = {https://github.com/sugatoray/genespeak}
+    title = {GeneSpeak - A library to encode text as DNA and decode DNA to text},
+    url = {https://github.com/sugatoray/genespeak},
+    doi = {10.5281/zenodo.5885777},
+    month = {1},
+    year = {2022}
 }
 ```
 
