@@ -9,7 +9,7 @@ authors:
 title: "GeneSpeak - A library to encode text as DNA and decode DNA to text"
 # version: 1.0.0
 doi: 10.5281/zenodo.5885777
-date-released: 2022-01-05
+# date-released: 2022-01-05
 url: "https://github.com/sugatoray/genespeak"
 
 #### Citations file related resources:
