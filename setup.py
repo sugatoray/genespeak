@@ -1,3 +1,4 @@
+# cspell: disable
 import re
 import pathlib
 from setuptools import setup, find_packages
@@ -30,7 +31,7 @@ def update_banner_path(readme_path: str = "README.md") -> str:
 
     text = pathlib.Path("README.md").read_text()
     res = BANNER_PATH_PAT.search(text)
-    replace_with = r"[#repo-banner]: " + CONTENT_PATH_PREFIX + res.groupdict().get("path") + '\n\n'
+    replace_with = r"[#repo-banner]: " + CONTENT_PATH_PREFIX + res.groupdict().get("path") + '\n\n'  # type: ignore
     mod_text = BANNER_PATH_PAT.sub(replace_with, text)
 
     return mod_text
