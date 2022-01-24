@@ -8,7 +8,6 @@ from dataclasses import dataclass
 from typing import Tuple, Dict, Optional
 
 
-
 DEFAULT_SCHEMA = "ACGT"
 
 
