@@ -16,6 +16,7 @@ tests export-ignore
 docs export-ignore
 notebooks export-ignore
 conda-recipe export-ignore
+.archives export-ignore
 
 .streamlit export-ignore
 apps export-ignore

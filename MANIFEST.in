@@ -24,6 +24,7 @@ recursive-exclude site *
 recursive-exclude conda-recipe *
 recursive-exclude apps *
 recursive-exclude .streamlit *
+recursive-exclude .archives *
 
 exclude .flake8
 exclude .gitignore

@@ -1,6 +1,6 @@
 .PHONY: black flake test types install interrogate \
 		build buildcheck buildplus buildcheckplus getpackageinfo \
-		github pypi testpypi \
+		github pypi testpypi archive archive-spec \
 		clean cleanall style check pipinstalltest \
 		streamlit_demo streamlit_run \
 		this thispy thatpy
@@ -13,6 +13,7 @@ PIPINSTALL_PYPITEST := "$(PYPIPINSTALL) $(TESTPYPI_DOWNLOAD_URL)"
 PKG_INFO := "import pkginfo; dev = pkginfo.Develop('.'); print((dev.$${FIELD}))"
 STREAMLIT_DEMO_APP := "./apps/demo/streamlit_app/app.py"
 STREAMLIT_PORT := 12321
+ARCHIVES_DIR := ".archives"
 
 
 black:
@@ -68,11 +69,42 @@ testpypi: build
 	# source: https://packaging.python.org/en/latest/guides/using-testpypi/#using-testpypi-with-twine
 	twine upload --repository testpypi dist/*
 
+## Creating Git Archives (Similar to GitHub Releases)
+
+archive-spec: buildplus
+	@# Usage:
+	@# $ make archive-spec
+	@# $ make archive-spec REF="v0.0.9"
+	@# $ make archive-spec REF="master"
+	$(eval REF := $(shell if [ -z $(REF) ]; then echo HEAD; else echo $(REF); fi))
+	@echo REF is: [$(REF)]
+	$(eval ARCHIVE_FORMAT := "tar.gz")
+	$(eval TAG := $(shell if [ "$(REF)" = "HEAD" ]; then echo v$(PKG_VERSION); else echo $(REF); fi))
+	@echo TAG is: [$(TAG)]
+	$(eval ARCHIVE_FILEPATH := $(ARCHIVES_DIR)/$(TAG).$(ARCHIVE_FORMAT))
+
+archive-usage:
+	#-----------------------------
+	# Usage:
+	# $ make archive
+	# $ make archive REF="v0.0.9"
+	# $ make archive REF="master"
+	#-----------------------------
+	@echo ""
+
+archive: archive-usage archive-spec
+	@mkdir -p $(ARCHIVES_DIR)
+	@echo "Creating git archive: [$(ARCHIVE_FILEPATH)]\n"
+	@# Example: git archive --prefix=v0.0.9/ -o .archives/v0.0.9.tar.gz HEAD
+	git archive --prefix=$(TAG)/ -o $(ARCHIVE_FILEPATH) $(REF)
+
+## Cleaning up repository
+
 clean:
 	rm -rf **/.ipynb_checkpoints **/.pytest_cache **/__pycache__ **/**/__pycache__ .ipynb_checkpoints .pytest_cache
 
 cleanall: clean
-	rm -rf build/* dist/* $(PACKAGE_NAME).egg-info/*
+	rm -rf build/* dist/* $(PACKAGE_NAME).egg-info/* $(ARCHIVES_DIR)/*
 
 style: clean black flake interrogate clean
 
@@ -99,6 +131,9 @@ streamlit_run:
 	#       sudo fuser -k $(STREAMLIT_PORT)/tcp
 	streamlit run $(STREAMLIT_DEMO_APP) --server.port=$(STREAMLIT_PORT) &
 
+
+################  BELOW THIS LINE:  MEANT FOR TESTING ONLY    ################
+
 this:
 	# example: make this VERSION="0.0.3"
 	@if [ $(VERSION) ]; then echo This is $(PACKAGE_NAME)==$(VERSION); else echo This is $(PACKAGE_NAME); fi;
@@ -112,3 +147,6 @@ thispy:
 
 thatpy: thispy
 	@echo FIELD is: [$(FIELD)]
+	$(eval BRANCH := $(shell if [ -z $(BRANCH) ]; then echo HEAD; else echo $(BRANCH); fi))
+	@echo BRANCH is: [$(BRANCH)]
+
