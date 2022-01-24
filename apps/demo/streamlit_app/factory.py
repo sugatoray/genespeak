@@ -96,10 +96,5 @@ def setup_app(options: Dict):
     U.display_input(X, options)
     U.display_output(X, Y, options)
 
-    "---"
-    "### Guess TEXT from DNA for all schemas"
-
-    guess = st.button("Guess")
-    if guess and options["convert_to"] == "TEXT":
-        with st.expander("Click to see guesses 👇", expanded=False):
-            _ = U.generate_guesses(X, options)
+    if options["convert_to"] == "TEXT":
+        U.display_guessed_text(X, options)

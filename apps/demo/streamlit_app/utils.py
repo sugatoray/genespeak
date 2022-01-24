@@ -5,7 +5,7 @@ import pyperclip
 from genespeak import text_to_dna, dna_to_text
 from textwrap import dedent
 from dataclasses import dataclass
-from typing import Tuple, Dict, Optional
+from typing import Tuple, Dict, List, Optional
 
 
 DEFAULT_SCHEMA = "ACGT"
@@ -224,3 +224,23 @@ def generate_guesses(X: str, options: Dict) -> Dict:
     st.json(payload)
     return payload
 
+
+def display_guessed_text(X: str, options: Dict, schemas: Optional[List[str]]=None):
+    """Displays all the guessed values of TEXT for a given DNA (``X``), and for a list of schemas."""
+    st.info(dedent("""### Guess ❓ DNA ➡️ TEXT"""))
+    with st.container():
+        col1, col2 = st.columns([6, 1])
+        with col1:
+            schemas = list(schemas if schemas else Defaults.CONVERSION_SCHEMAS)
+            num_schemas = len(schemas)
+            filler = "all " if num_schemas==len(Defaults.CONVERSION_SCHEMAS) else ""
+            filler += str(num_schemas)
+            st.write(dedent(f"""
+            Click the **Guess** button to guess the `TEXT` from the given `DNA` for {filler} schemas.
+            """))
+        with col2:
+            guess = st.button("Guess")
+        # Show guessed results
+        if guess and options["convert_to"] == "TEXT":
+            with st.expander("Click to see guesses 👇", expanded=False):
+                _ = generate_guesses(X, options)
