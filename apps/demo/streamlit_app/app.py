@@ -4,7 +4,7 @@ import os
 import streamlit as st
 # import pyautogui # This does not work on Streamlit Cloud
 import utils as U
-import factory as F
+import appfactory as F
 
 ## To emulate streamlit cloud specific app
 ## restrictions uncomment the following line

@@ -6,6 +6,13 @@ import utils as U
 from utils import Defaults
 
 
+__all__ = [
+    "setup_app",
+    "setup_preamble",
+    "setup_sidebar",
+]
+
+
 def setup_sidebar() -> Tuple[Dict, Dict]:
     with st.sidebar:
         st.write("## ⚙️ Parameters")
