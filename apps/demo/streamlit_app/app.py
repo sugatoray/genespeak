@@ -3,7 +3,8 @@
 import os
 import streamlit as st
 # import pyautogui # This does not work on Streamlit Cloud
-from utils import setup_sidebar, setup_preamble, setup_app, is_streamlit_cloud
+import utils as U
+import factory as F
 
 ## To emulate streamlit cloud specific app
 ## restrictions uncomment the following line
@@ -11,17 +12,17 @@ from utils import setup_sidebar, setup_preamble, setup_app, is_streamlit_cloud
 
 st.header("GeneSpeak - Demo App 🧬")
 
-setup_preamble()
+F.setup_preamble()
 
-options, buttons = setup_sidebar()
+options, buttons = F.setup_sidebar()
 
 placeholder = st.empty()
 with placeholder.container():
     st.write("## Simple Conversion: `Text` 🔄 `DNA`")
-    setup_app(options)
+    F.setup_app(options)
 
 if buttons["reset"] or buttons["refresh"]:
-    # if not is_streamlit_cloud():
+    # if not U.is_streamlit_cloud():
     #     # if os.environ.get("DISPLAY") is not None:
     #     #     try:
     #     #         pyautogui.hotkey("ctrl", "F5")
