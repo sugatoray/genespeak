@@ -73,7 +73,7 @@ README: str = update_banner_path(readme_path="README.md")
 
 setup(
     name="genespeak",
-    version="0.0.10.dev1",
+    version="0.0.10.dev2",
     author="Sugato Ray",
     author_email='sugatoray.dev@gmail.com',
     python_requires='>=3.6',
