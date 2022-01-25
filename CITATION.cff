@@ -38,6 +38,14 @@ license: "MIT"
 ## - [x] Others:
 ##   - [x] https://guides.github.com/activities/citable-code/
 ##   - [x] https://docs.ropensci.org/cffr/articles/bibtex_cff.html
+## - [x] Tools for working with CITATION.cff files
+##   - All tools: https://github.com/citation-file-format/citation-file-format#tools-to-work-with-citationcff-files-wrench
+##   - [x] doi2cff: 
+##     - [x] GitHub: https://github.com/citation-file-format/doi2cff
+##   - [x] cffconvert: 
+##     - [x] PyPI: https://pypi.org/project/cffconvert/
+##     - [x] GitHub: https://github.com/citation-file-format/cff-converter-python
+##     - [x] Docker: https://github.com/citation-file-format/citation-file-format#validation-heavy_check_mark
 ##
 ##
 ## This CITATION.cff file was generated with cffinit.
