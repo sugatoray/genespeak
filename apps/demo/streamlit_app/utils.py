@@ -177,7 +177,10 @@ def display_input(X: str, options: Dict):
                 show_input(options, X)
 
             with col2:
-                st.button("Copy Input", help="Click to copy input to clipboard", on_click=pyperclip.copy(X))
+                try:
+                    st.button("Copy Input", help="Click to copy input to clipboard", on_click=pyperclip.copy(X))
+                except pyperclip.PyperclipException as e:
+                    print(e)
         else:
             show_input(options, X)
 
