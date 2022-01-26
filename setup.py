@@ -53,6 +53,7 @@ test_packages = [
     "flake8>=4.0.1",
     "pytest>=6.2.5",
     "black>=21.12b0",
+    "isort>=5.10.1",
     "pre-commit>=2.16.0",
     "pre-commit-hooks>=4.0.0" "flake8-print>=4.0.0",
     "flake8-black>=0.2.3",
@@ -76,7 +77,7 @@ setup(
     version="0.0.10.dev2",
     author="Sugato Ray",
     author_email="sugatoray.dev@gmail.com",
-    python_requires=">=3.6",
+    python_requires=">=3.7",
     keywords="genespeak encoding decoding text-to-dna dna-to-text",
     packages=find_packages(
         include=["genespeak"], exclude=["notebooks", "docs", "test*"]
