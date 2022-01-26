@@ -23,6 +23,9 @@ __all__ = [
 
 DEFAULT_SCHEMA = "ACGT"
 
+def show_balloons(watchvariable: str = "ST_SHOW_BALLOONS", value: str="0") -> bool:
+    # Default is False (ST_SHOW_BALLOONS = "0")
+    return bool(os.environ.get(watchvariable, value) == "1")
 
 def is_streamlit_cloud(watchvariable: str = "ST_IS_STREAMLIT_CLOUD") -> bool:
     """If running in the Streamlit Cloud, set environment variable
@@ -45,7 +48,7 @@ class Defaults:
     APP_URL: str = r"https://share.streamlit.io/sugatoray/genespeak/master/apps/demo/streamlit_app/app.py"
     APP_URL_SHORT: str = r"https://tinyurl.com/genespeak-demo"
     ON_ST_CLOUD: bool = is_streamlit_cloud()
-    SHOW_BALLOONS: bool = False
+    SHOW_BALLOONS: bool = show_balloons()
 
 
 def add_about_section():
