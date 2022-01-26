@@ -9,9 +9,12 @@ The following folder/files are used for this app.
 
 ```sh
 app.py                  # main app file
+appfactory.py           # collection of top-level functions that are used in app.py
 utils.py                # app building blocks for better abstraction
+visualization.py        # dna-visualization related code
 requirements.txt        # python dependencies for the app
 packages.txt            # non-python, apt based packages (if necessary)
+.streamlit              # app-settings
 README.md               # readme file explaining anything that needs some documentation
 ```
 

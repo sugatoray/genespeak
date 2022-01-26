@@ -36,15 +36,16 @@ def is_streamlit_cloud(watchvariable: str = "ST_IS_STREAMLIT_CLOUD") -> bool:
 class Defaults:
     TEXT_INPUT_ASCII: str = "Hello World!"
     TEXT_INPUT_UTF8: str = "Hello World 👍!"
-    TEXT_INPUT_OPTIONS: Tuple[str] = ("Text Field", "Text Area")
-    CONVERT_TO_OPTIONS: Tuple[str] = ("DNA", "TEXT")
-    CONVERSION_STRATEGIES: Tuple[str] = ("ascii", "utf-8")
+    TEXT_INPUT_OPTIONS: Tuple[str] = ("Text Field", "Text Area")  # type: ignore
+    CONVERT_TO_OPTIONS: Tuple[str] = ("DNA", "TEXT")  # type: ignore
+    CONVERSION_STRATEGIES: Tuple[str] = ("ascii", "utf-8")  # type: ignore
     CONVERSION_SCHEMA: str = DEFAULT_SCHEMA
     CONVERSION_SCHEMAS: Tuple[str] = tuple(''.join(i) for i in itertools.permutations(DEFAULT_SCHEMA, 4))
     GENESPEAK_BANNER_URL: str = r"https://raw.githubusercontent.com/sugatoray/genespeak/master/docs/assets/images/genespeak_banner_01.png"
     APP_URL: str = r"https://share.streamlit.io/sugatoray/genespeak/master/apps/demo/streamlit_app/app.py"
     APP_URL_SHORT: str = r"https://tinyurl.com/genespeak-demo"
     ON_ST_CLOUD: bool = is_streamlit_cloud()
+    SHOW_BALLOONS: bool = False
 
 
 def add_about_section():
@@ -133,9 +134,9 @@ def get_input(options: Dict) -> str:
     convert_from = options["convert_from"]
     text_value = get_default_input_text_value(options)
     if options["text_input_type"] == "Text Field":
-        X = st.text_input(f"{convert_from} Input as string", value=text_value)
+        X = st.text_input(f"{convert_from} Input as string 👇", value=text_value)
     else:
-        X = st.text_area(f"{convert_from} Input as string", value=text_value)
+        X = st.text_area(f"{convert_from} Input as string 👇", value=text_value)
 
     return X
 
@@ -144,25 +145,32 @@ def eval_output(X: str, options: Dict, schema: Optional[str] = None, strategy: O
     """Evaluate output (``Y``) based on Input-type (TEXT or DNA),
     conversion schema and strategy.
     """
-    schema = options["schema"] if schema is None else schema
-    strategy = options["strategy"] if strategy is None else strategy
+    schema: str = options["schema"] if schema is None else schema
+    strategy: str = options["strategy"] if strategy is None else strategy
     Y: str = ""
     if options["convert_to"] == "DNA":
         Y = text_to_dna(text=X, schema=schema, strategy=strategy)
     elif options["convert_to"] == "TEXT":
-        if X:
-            diff = set(X.upper()) - set(list(Defaults.CONVERSION_SCHEMA))
-            if diff:
-                st.error("Input is not valid dna to convert from.")
-                st.stop()
-            else:
-                Y = dna_to_text(dna=X, schema=schema, strategy=strategy)
+        if X and isDNAType(X):
+            Y = dna_to_text(dna=X, schema=schema, strategy=strategy)
     return Y
+
+def isDNAType(X: str) -> bool:
+    """Checks if text (``X``) is a valid DNA type and returns a boolean."""
+    if X:
+        diff = set(X.upper()) - set(list(Defaults.CONVERSION_SCHEMA))
+        if diff:
+            st.error("Input is not valid dna to convert from.")
+            st.stop()
+        return True
+    else:
+        return False
 
 
 def display_input(X: str, options: Dict):
     """Displays User Input (``X``)."""
-    with st.expander("User Input 👇", expanded=True):
+    convert_from = options["convert_from"]
+    with st.expander(f"Display User Input: {convert_from} 👇", expanded=True):
         if not Defaults.ON_ST_CLOUD:
             col1, col2 = st.columns([4, 1])
             with col1:
@@ -176,7 +184,9 @@ def display_input(X: str, options: Dict):
 
 def display_output(X: str, Y: str, options: Dict):
     """Display Generated Output (``Y``)."""
-    st.success("### Output 🎁")
+    # determine which emoji to use: DNA or TEXT
+    e = "🧬" if options["convert_to"] == "DNA" else "🅰️"
+    st.success(f"### Output 🎁{e}")
     payload = {
         "input": X,
         "output": Y,

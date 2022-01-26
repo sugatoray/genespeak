@@ -33,6 +33,5 @@ if buttons["reset"] or buttons["refresh"]:
     placeholder.empty()
     st.warning("Refresh the webpage manually!")
 
-
 # st.info("Showing an IFrame")
 # st.components.v1.iframe("https://sugatoray.github.io/genespeak", height=500, scrolling=True)

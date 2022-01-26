@@ -3,7 +3,9 @@ from typing import Tuple, Dict, Optional
 from textwrap import dedent
 
 import utils as U
-from utils import Defaults
+import visualization as V
+
+Defaults = U.Defaults
 
 
 __all__ = [
@@ -33,6 +35,10 @@ def setup_sidebar() -> Tuple[Dict, Dict]:
             label="Convertion strategy",
             options=Defaults.CONVERSION_STRATEGIES,
             index=0,
+        )
+        options["show_balloons"] = st.checkbox(
+            label="Show balloons",
+            value=Defaults.SHOW_BALLOONS,
         )
         options["schema"] = st.selectbox(
             label="Convertion schema",
@@ -68,7 +74,9 @@ def setup_preamble():
             [![Conda Recipe](https://img.shields.io/static/v1?logo=conda-forge&style=flat&color=green&label=recipe&message=genespeak)][#conda-forge-feedstock]
             [![Docs - GitHub.io](https://img.shields.io/static/v1?logo=github&style=flat&color=pink&label=docs&message=genespeak)][#docs-package]
             [![CodeFactor](https://www.codefactor.io/repository/github/sugatoray/genespeak/badge)][#codefactor-package]
+            [![GitHub Repo](https://img.shields.io/static/v1?logo=github&style=flat&color=blue&label=code&message=genespeak%20⭐)][#github-repo]
 
+            [#github-repo]: https://github.com/sugatoray/genespeak
             [#github-license]: https://github.com/sugatoray/genespeak/blob/master/LICENSE
             [#pypi-package]: https://pypi.org/project/genespeak/
             [#conda-forge-package]: https://anaconda.org/conda-forge/genespeak
@@ -102,6 +110,15 @@ def setup_app(options: Dict):
     Y = U.eval_output(X, options)
     U.display_input(X, options)
     U.display_output(X, Y, options)
+
+    dna = "ACGT"
+    if options["convert_to"] == "DNA":
+        dna = Y
+    elif options["convert_to"] == "TEXT":
+        dna = X
+    V.display_annotated_dna(options,
+        dna = dna,
+    )
 
     if options["convert_to"] == "TEXT":
         U.display_guessed_text(X, options)
