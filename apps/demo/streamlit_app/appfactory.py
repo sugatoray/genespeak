@@ -1,7 +1,7 @@
-import streamlit as st
-from typing import Tuple, Dict, Optional
 from textwrap import dedent
+from typing import Dict, Tuple
 
+import streamlit as st
 import utils as U
 import visualization as V
 
@@ -64,7 +64,9 @@ def setup_preamble():
     with st.container():
         st.image(Defaults.GENESPEAK_BANNER_URL, caption="GeneSpeak Banner")
 
-        st.write(dedent("""
+        st.write(
+            dedent(
+                """
             <!--- BADGES: START --->
             [![GitHub - License](https://img.shields.io/github/license/sugatoray/genespeak?logo=github&style=flat&color=green)][#github-license]
             [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/genespeak?logo=pypi&style=flat&color=blue)][#pypi-package]
@@ -90,16 +92,20 @@ def setup_preamble():
             original text. Text encoding is done for both `ascii` and
             `utf-8` characters based on the `strategy` keyword argument.
 
-            """),
-                 unsafe_allow_html=True,
-                 )
+            """
+            ),
+            unsafe_allow_html=True,
+        )
 
-        st.error(dedent("""
+        st.error(
+            dedent(
+                """
             If your text includes ***emojis*** or ***non-english*** characters, you **must
             use `utf-8` conversion strategy** to convert unicode characters into equivalent DNA
             base-pair sequence.
-            """)
-                 )
+            """
+            )
+        )
 
 
 def setup_app(options: Dict):
@@ -116,8 +122,9 @@ def setup_app(options: Dict):
         dna = Y
     elif options["convert_to"] == "TEXT":
         dna = X
-    V.display_annotated_dna(options,
-        dna = dna,
+    V.display_annotated_dna(
+        options,
+        dna=dna,
     )
 
     if options["convert_to"] == "TEXT":

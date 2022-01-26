@@ -1,8 +1,7 @@
 # cspell: disable
 
-from typing import Union, List, Tuple
 import re
-
+from typing import List, Tuple, Union
 
 _PAT_RLE_DECODE = r"((\d+)(\w))"
 _PAT_RLE_DECODE = re.compile(_PAT_RLE_DECODE)
@@ -25,7 +24,10 @@ def run_length_encode(dna: str) -> str:
 
     return _run_length_encode(dna, use_regex=True, return_list=False)  # type: ignore
 
-def _run_length_encode(dna: str, use_regex: bool = True, return_list: bool = False) -> Union[str, List[Tuple[str, int]]]:
+
+def _run_length_encode(
+    dna: str, use_regex: bool = True, return_list: bool = False
+) -> Union[str, List[Tuple[str, int]]]:
     """Return the run length encoding of a string
 
     Usage:
@@ -41,7 +43,10 @@ def _run_length_encode(dna: str, use_regex: bool = True, return_list: bool = Fal
     else:
         return noregex_dna_rle(dna, return_list=return_list)
 
-def noregex_dna_rle(dna: str, return_list: bool = False) -> Union[str, List[Tuple[str, int]]]:
+
+def noregex_dna_rle(
+    dna: str, return_list: bool = False
+) -> Union[str, List[Tuple[str, int]]]:
 
     counter = []
     temp_counter = []
@@ -59,18 +64,20 @@ def noregex_dna_rle(dna: str, return_list: bool = False) -> Union[str, List[Tupl
                 counter.append(tuple(temp_counter.copy()))
 
     if not return_list:
-        dna_rle = ''.join([f'{c[1]}{c[0]}' for c in counter])
+        dna_rle = "".join([f"{c[1]}{c[0]}" for c in counter])
         return dna_rle
     else:
         return counter
 
 
-def regex_dna_rle(dna: str, return_list: bool = False) -> Union[str, List[Tuple[str, int]]]:
+def regex_dna_rle(
+    dna: str, return_list: bool = False
+) -> Union[str, List[Tuple[str, int]]]:
     pat = _PAT_RLE_ENCODE
     if return_list:
         dna_rle = []
     else:
-        dna_rle = ''
+        dna_rle = ""
     for v in pat.findall(dna):
         groups = v[1:]
         for g in groups:
@@ -80,14 +87,11 @@ def regex_dna_rle(dna: str, return_list: bool = False) -> Union[str, List[Tuple[
                 else:
                     dna_rle += f"{len(g)}{g[0]}"
     if return_list:
-        dna_rle = ''.join([f'{c[1]}{c[0]}' for c in dna_rle])
+        dna_rle = "".join([f"{c[1]}{c[0]}" for c in dna_rle])
 
     return dna_rle
 
 
 def run_length_decode(dna_rle: str) -> str:
     pat = _PAT_RLE_DECODE
-    return ''.join([c * int(n) for _, n, c in pat.findall(dna_rle)])
-
-
-
+    return "".join([c * int(n) for _, n, c in pat.findall(dna_rle)])

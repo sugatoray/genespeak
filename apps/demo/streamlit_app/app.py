@@ -1,10 +1,10 @@
 # GeneSpeak demo app
 
-import os
-import streamlit as st
+# import os
 # import pyautogui # This does not work on Streamlit Cloud
-import utils as U
+# import utils as U
 import appfactory as F
+import streamlit as st
 
 ## To emulate streamlit cloud specific app
 ## restrictions uncomment the following line

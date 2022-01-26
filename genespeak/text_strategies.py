@@ -27,14 +27,18 @@ class UTF8TextEncodingStrategy(BaseTextEncodingStrategy):
 @dataclass
 class TextEncodingStrategies:
     """A class for all available text-encoding strategies."""
+
     ascii = ASCIITextEncodingStrategy()
     utf8 = UTF8TextEncodingStrategy()
 
 
-AVAILABLE_STRATEGY_NAMES = [s for s in dir(TextEncodingStrategies) if not s.startswith("_")]  # ["ascii", "utf8"]
+AVAILABLE_STRATEGY_NAMES = [
+    s for s in dir(TextEncodingStrategies) if not s.startswith("_")
+]  # ["ascii", "utf8"]
 DEFAULT_STRATEGY_NAME = "ascii"
 
-def set_strategy(strategy_name: Optional[str]=None):
+
+def set_strategy(strategy_name: Optional[str] = None):
     """Returns a text-encoding strategy by name.
 
     Arguments:

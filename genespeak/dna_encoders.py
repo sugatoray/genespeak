@@ -1,10 +1,9 @@
 from typing import Dict
 
-
 # Define Dictionaries and Functions for DNA/Text Conversion
 DEFAULT_SCHEMA = "ACGT"
-DNABASE_AS_CHR = dict({'00': 'A', '01': 'C', '10': 'G', '11': 'T'})
-DNABASE_AS_BIN = dict({'A': '00', 'C': '01', 'G': '10', 'T': '11'})
+DNABASE_AS_CHR = dict({"00": "A", "01": "C", "10": "G", "11": "T"})
+DNABASE_AS_BIN = dict({"A": "00", "C": "01", "G": "10", "T": "11"})
 
 
 def dec2bin(x: int, n: int = 2) -> str:
@@ -35,6 +34,7 @@ class DNABaseEncoder(object):
     There are a total of 24 (`4 x 3 x 2 x 1 = 4!`) possible schemas:
     `ACGT`, `ACTG`, `AGCT`, `AGTC`, `ATGC`, `ATCG`, `GACT`, `GCAT`, `GCTA`, `AGCT`, etc.
     """
+
     dnabase_as_bin: Dict[str, str] = DNABASE_AS_BIN.copy()
     dnabase_as_chr: Dict[str, str] = DNABASE_AS_CHR.copy()
 

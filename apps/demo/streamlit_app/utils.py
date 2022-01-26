@@ -1,12 +1,13 @@
-import os
-import streamlit as st
 import itertools
-import pyperclip
-from genespeak import text_to_dna, dna_to_text
-from textwrap import dedent
+import os
 from dataclasses import dataclass
-from typing import Tuple, Dict, List, Optional
+from textwrap import dedent
+from typing import Dict, List, Optional, Tuple
 
+import pyperclip
+import streamlit as st
+
+from genespeak import dna_to_text, text_to_dna
 
 __all__ = [
     "Defaults",
@@ -23,9 +24,11 @@ __all__ = [
 
 DEFAULT_SCHEMA = "ACGT"
 
-def show_balloons(watchvariable: str = "ST_SHOW_BALLOONS", value: str="0") -> bool:
+
+def show_balloons(watchvariable: str = "ST_SHOW_BALLOONS", value: str = "0") -> bool:
     # Default is False (ST_SHOW_BALLOONS = "0")
     return bool(os.environ.get(watchvariable, value) == "1")
+
 
 def is_streamlit_cloud(watchvariable: str = "ST_IS_STREAMLIT_CLOUD") -> bool:
     """If running in the Streamlit Cloud, set environment variable
@@ -43,7 +46,9 @@ class Defaults:
     CONVERT_TO_OPTIONS: Tuple[str] = ("DNA", "TEXT")  # type: ignore
     CONVERSION_STRATEGIES: Tuple[str] = ("ascii", "utf-8")  # type: ignore
     CONVERSION_SCHEMA: str = DEFAULT_SCHEMA
-    CONVERSION_SCHEMAS: Tuple[str] = tuple(''.join(i) for i in itertools.permutations(DEFAULT_SCHEMA, 4))
+    CONVERSION_SCHEMAS: Tuple[str] = tuple(
+        "".join(i) for i in itertools.permutations(DEFAULT_SCHEMA, 4)
+    )
     GENESPEAK_BANNER_URL: str = r"https://raw.githubusercontent.com/sugatoray/genespeak/master/docs/assets/images/genespeak_banner_01.png"
     APP_URL: str = r"https://share.streamlit.io/sugatoray/genespeak/master/apps/demo/streamlit_app/app.py"
     APP_URL_SHORT: str = r"https://tinyurl.com/genespeak-demo"
@@ -55,7 +60,9 @@ def add_about_section():
     """Adds an About section to the app."""
 
     st.write("## ℹ️ About")
-    st.info(dedent(f"""
+    st.info(
+        dedent(
+            f"""
         This web [app][#streamlit-app] is maintained by [Sugato Ray][#linkedin].
         You can follow me on social media:
 
@@ -69,7 +76,8 @@ def add_about_section():
         [#streamlit-app]: {Defaults.APP_URL}
 
         Short URL: {Defaults.APP_URL_SHORT}
-        """)
+        """
+        )
     )
 
 
@@ -124,7 +132,9 @@ def get_default_input_text_value(options: Dict) -> str:
     #    autofill the default text_value with its
     #    DNA-equivalent for the chosen schema.
     if options["convert_to"] == "TEXT":
-        text_value = text_to_dna(text_value, schema=options["schema"], strategy=options["strategy"])
+        text_value = text_to_dna(
+            text_value, schema=options["schema"], strategy=options["strategy"]
+        )
 
     return text_value
 
@@ -133,7 +143,7 @@ def get_input(options: Dict) -> str:
     """Returns the text input (``X``), which could be either
     plain TEXT or DNA from the user.
     """
-    X = ''
+    X = ""
     convert_from = options["convert_from"]
     text_value = get_default_input_text_value(options)
     if options["text_input_type"] == "Text Field":
@@ -144,19 +154,22 @@ def get_input(options: Dict) -> str:
     return X
 
 
-def eval_output(X: str, options: Dict, schema: Optional[str] = None, strategy: Optional[str] = None) -> str:
+def eval_output(
+    X: str, options: Dict, schema: Optional[str] = None, strategy: Optional[str] = None
+) -> str:
     """Evaluate output (``Y``) based on Input-type (TEXT or DNA),
     conversion schema and strategy.
     """
-    schema: str = options["schema"] if schema is None else schema
-    strategy: str = options["strategy"] if strategy is None else strategy
+    schema = options["schema"] if schema is None else schema
+    strategy = options["strategy"] if strategy is None else strategy
     Y: str = ""
     if options["convert_to"] == "DNA":
-        Y = text_to_dna(text=X, schema=schema, strategy=strategy)
+        Y = text_to_dna(text=X, schema=schema, strategy=strategy)  # type: ignore
     elif options["convert_to"] == "TEXT":
         if X and isDNAType(X):
-            Y = dna_to_text(dna=X, schema=schema, strategy=strategy)
+            Y = dna_to_text(dna=X, schema=schema, strategy=strategy)  # type: ignore
     return Y
+
 
 def isDNAType(X: str) -> bool:
     """Checks if text (``X``) is a valid DNA type and returns a boolean."""
@@ -181,9 +194,14 @@ def display_input(X: str, options: Dict):
 
             with col2:
                 try:
-                    st.button("Copy Input", help="Click to copy input to clipboard", on_click=pyperclip.copy(X))
+                    st.button(
+                        "Copy Input",
+                        help="Click to copy input to clipboard",
+                        on_click=pyperclip.copy(X),
+                    )
                 except pyperclip.PyperclipException as e:
-                    print(e)
+                    # TODO: use logging instead of print statement
+                    print(e)  # noqa: T001 (print found)
         else:
             show_input(options, X)
 
@@ -203,7 +221,9 @@ def display_output(X: str, Y: str, options: Dict):
         },
     }
 
-    with st.expander(f'Output: {options["convert_from"]} ➡️ {options["convert_to"]} 👇', expanded=True):
+    with st.expander(
+        f'Output: {options["convert_from"]} ➡️ {options["convert_to"]} 👇', expanded=True
+    ):
         if not Defaults.ON_ST_CLOUD:
             col1, col2 = st.columns([4, 1])
             with col1:
@@ -213,10 +233,11 @@ def display_output(X: str, Y: str, options: Dict):
                     st.button(
                         label="Copy Result",
                         help="Click to copy result to clipboard",
-                        on_click=pyperclip.copy(Y)
+                        on_click=pyperclip.copy(Y),
                     )
                 except pyperclip.PyperclipException as e:
-                    print(e)
+                    # TODO: use logging instead of print statement
+                    print(e)  # noqa: T001 (print found)
 
         else:
             show_output(options, Y)
@@ -228,7 +249,7 @@ def display_output(X: str, Y: str, options: Dict):
 def generate_guesses(X: str, options: Dict) -> Dict:
     results = dict()
     for schema in Defaults.CONVERSION_SCHEMAS:
-        Y, err, status = '', '', ''
+        Y, err, status = "", "", ""
         try:
             Y = eval_output(X, options, schema=schema)
             status = "SUCCESS"
@@ -252,13 +273,13 @@ def generate_guesses(X: str, options: Dict) -> Dict:
         "guesses": {
             "total": len(Defaults.CONVERSION_SCHEMAS),
             "results": results,
-        }
+        },
     }
     st.json(payload)
     return payload
 
 
-def display_guessed_text(X: str, options: Dict, schemas: Optional[List[str]]=None):
+def display_guessed_text(X: str, options: Dict, schemas: Optional[List[str]] = None):
     """Displays all the guessed values of TEXT for a given DNA (``X``), and for a list of schemas."""
     st.info(dedent("""### Guess ❓ DNA ➡️ TEXT"""))
     with st.container():
@@ -266,11 +287,15 @@ def display_guessed_text(X: str, options: Dict, schemas: Optional[List[str]]=Non
         with col1:
             schemas = list(schemas if schemas else Defaults.CONVERSION_SCHEMAS)
             num_schemas = len(schemas)
-            filler = "all " if num_schemas==len(Defaults.CONVERSION_SCHEMAS) else ""
+            filler = "all " if num_schemas == len(Defaults.CONVERSION_SCHEMAS) else ""
             filler += str(num_schemas)
-            st.write(dedent(f"""
+            st.write(
+                dedent(
+                    f"""
             Click the **Guess** button to guess the `TEXT` from the given `DNA` for {filler} schemas.
-            """))
+            """
+                )
+            )
         with col2:
             guess = st.button("Guess")
         # Show guessed results

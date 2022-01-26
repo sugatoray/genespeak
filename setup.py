@@ -31,10 +31,11 @@ def update_banner_path(readme_path: str = "README.md") -> str:
 
     text = pathlib.Path("README.md").read_text()
     res = BANNER_PATH_PAT.search(text)
-    replace_with = r"[#repo-banner]: " + CONTENT_PATH_PREFIX + res.groupdict().get("path") + '\n\n'  # type: ignore
+    replace_with = r"[#repo-banner]: " + CONTENT_PATH_PREFIX + res.groupdict().get("path") + "\n\n"  # type: ignore
     mod_text = BANNER_PATH_PAT.sub(replace_with, text)
 
     return mod_text
+
 
 base_packages = []
 
@@ -53,8 +54,7 @@ test_packages = [
     "pytest>=6.2.5",
     "black>=21.12b0",
     "pre-commit>=2.16.0",
-    "pre-commit-hooks>=4.0.0"
-    "flake8-print>=4.0.0",
+    "pre-commit-hooks>=4.0.0" "flake8-print>=4.0.0",
     "flake8-black>=0.2.3",
 ]
 
@@ -75,12 +75,11 @@ setup(
     name="genespeak",
     version="0.0.10.dev2",
     author="Sugato Ray",
-    author_email='sugatoray.dev@gmail.com',
-    python_requires='>=3.6',
+    author_email="sugatoray.dev@gmail.com",
+    python_requires=">=3.6",
     keywords="genespeak encoding decoding text-to-dna dna-to-text",
     packages=find_packages(
-        include = ["genespeak"],
-        exclude = ["notebooks", "docs", "test*"]
+        include=["genespeak"], exclude=["notebooks", "docs", "test*"]
     ),
     description="A library to encode text as DNA and decode DNA to text.",
     long_description=README,
@@ -98,7 +97,7 @@ setup(
     license_files=("LICENSE",),
     classifiers=[
         "Intended Audience :: Science/Research",
-        'Operating System :: OS Independent',
+        "Operating System :: OS Independent",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",

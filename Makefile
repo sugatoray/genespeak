@@ -6,7 +6,7 @@
 		this thispy thatpy
 
 
-PACKAGE_NAME := "genespeak"
+PACKAGE_NAME := genespeak
 TESTPYPI_DOWNLOAD_URL := "https://test.pypi.org/simple/"
 PYPIPINSTALL := "python -m pip install -U --index-url"
 PIPINSTALL_PYPITEST := "$(PYPIPINSTALL) $(TESTPYPI_DOWNLOAD_URL)"
@@ -17,10 +17,10 @@ ARCHIVES_DIR := ".archives"
 
 
 black:
-	black --target-version py38 $(PACKAGE_NAME) tests setup.py
+	black --target-version py38 $(PACKAGE_NAME) tests apps setup.py
 
 flake:
-	flake8 $(PACKAGE_NAME) tests setup.py
+	flake8 $(PACKAGE_NAME) tests apps setup.py
 
 test:
 	pytest tests

@@ -1,25 +1,27 @@
-import streamlit as st
-import annotated_text as AT
-from typing import Tuple, Dict, Optional, List, Union
+from typing import Dict, List, Optional, Tuple, Union
 
+import annotated_text as AT
+import streamlit as st
 import utils as U
 
 Defaults = U.Defaults
 
 DEFAULT_ANNOTATION_SCHEMA = {
-    "A": dict(target="A", label="ADENINE" , color="#8ef"),
+    "A": dict(target="A", label="ADENINE", color="#8ef"),
     "C": dict(target="C", label="CYTOSINE", color="#fea"),
-    "G": dict(target="G", label="GUANINE" , color="#afa"),
-    "T": dict(target="T", label="THYMINE" , color="#faa"),
+    "G": dict(target="G", label="GUANINE", color="#afa"),
+    "T": dict(target="T", label="THYMINE", color="#faa"),
 }
 
 DEFAULT_ANNOTATION_LEGEND = dict(
     (k, tuple(v.get(x, "") for x in ["target", "label", "color"]))
-    for k, v in DEFAULT_ANNOTATION_SCHEMA.items())
+    for k, v in DEFAULT_ANNOTATION_SCHEMA.items()
+)
 
 DEFAULT_ANNOTATION_MAP = dict(
     (k, tuple(v.get(x, "") for x in ["target", "UNKWNON", "color"]))
-    for k, v in DEFAULT_ANNOTATION_SCHEMA.items())
+    for k, v in DEFAULT_ANNOTATION_SCHEMA.items()
+)
 
 AnnotationMapType = Optional[Dict[str, Tuple[str, str, str]]]
 
@@ -49,10 +51,17 @@ def widthwrap(dna: str, wrap_length: int = 10):
     """Returns a dna wrapped after each ``wrap_length``
     number of base-pairs.
     """
-    return '\n'.join([dna[i * wrap_length:(i + 1) * wrap_length] for i in range((len(dna) - 1) // wrap_length + 1)])
+    return "\n".join(
+        [
+            dna[i * wrap_length : (i + 1) * wrap_length]
+            for i in range((len(dna) - 1) // wrap_length + 1)
+        ]
+    )
 
 
-def annotate_dna(dna: str, wrap_length: Optional[int] = 10, annotation_map: AnnotationMapType = None) -> List[Union[str, Tuple[str, str, str]]]:
+def annotate_dna(
+    dna: str, wrap_length: Optional[int] = 10, annotation_map: AnnotationMapType = None
+) -> List[Union[str, Tuple[str, str, str]]]:
     """Returns annotated DNA (as a list)."""
     annotation_map = _validate_annotation_map(annotation_map=annotation_map)
     if wrap_length is not None:
@@ -61,10 +70,14 @@ def annotate_dna(dna: str, wrap_length: Optional[int] = 10, annotation_map: Anno
     return annotated_dna  # type: ignore
 
 
-def display_annotated_dna(options: Dict, dna: Optional[str] = None, show_balloons: bool = True, header: str = "Annotated DNA", show_annotated_dna: bool = True):
+def display_annotated_dna(
+    options: Dict,
+    dna: Optional[str] = None,
+    show_balloons: bool = True,
+    header: str = "Annotated DNA",
+    show_annotated_dna: bool = True,
+):
     """Displays annotated  dna"""
-
-
 
     with st.container():
         if options.get("show_balloons", show_balloons):
@@ -87,10 +100,10 @@ def display_annotated_dna(options: Dict, dna: Optional[str] = None, show_balloon
 
         annotation_legend = DEFAULT_ANNOTATION_LEGEND
 
-        if U.isDNAType(dna): # type: ignore
+        if U.isDNAType(dna):  # type: ignore
             annots, annotation_legend = _prepare_annotated_dna(dna, options, dna_wrap_length=10)  # type: ignore
 
-        col1, col2 = st.columns([5,2])
+        col1, col2 = st.columns([5, 2])
         with col1:
             display_annotation_legend(annotation_map=annotation_legend)
         with col2:
@@ -110,7 +123,7 @@ def display_annotated_dna(options: Dict, dna: Optional[str] = None, show_balloon
             # st.components.v1.html(html, width=700, height=200, scrolling=True)
 
 
-def _prepare_annotated_dna(dna: str, options: Dict, dna_wrap_length: int=10):
+def _prepare_annotated_dna(dna: str, options: Dict, dna_wrap_length: int = 10):
     """Core logic for displaying annotated dna."""
     # update annotation-map
     annotation_map = _validate_annotation_map(

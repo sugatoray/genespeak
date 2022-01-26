@@ -1,6 +1,12 @@
-from typing import Dict, List, Tuple, Union, Optional
-from genespeak.text_strategies import AVAILABLE_STRATEGY_NAMES, TextEncodingStrategies, set_strategy
+from typing import List, Optional, Tuple, Union
+
 from genespeak.dna_encoders import DNABaseEncoder
+from genespeak.text_strategies import (
+    AVAILABLE_STRATEGY_NAMES,
+    TextEncodingStrategies,
+    set_strategy,
+)
+
 
 class Converter(object):
     # The Converter API will enforce the use of text-encoding strategy names
@@ -11,10 +17,14 @@ class Converter(object):
     strategies = TextEncodingStrategies()
     encoder: DNABaseEncoder
 
-    def __init__(self, schema: str = "AGCT", binary_string_length: int = 8, strategy: str = "ascii"):
+    def __init__(
+        self,
+        schema: str = "AGCT",
+        binary_string_length: int = 8,
+        strategy: str = "ascii",
+    ):
         self.encoder = DNABaseEncoder(
-            schema=schema,
-            binary_string_length=binary_string_length
+            schema=schema, binary_string_length=binary_string_length
         )
         self.strategy = self.get_strategy(strategy_name=strategy)
 
@@ -24,10 +34,9 @@ class Converter(object):
             binary_string_length=self.encoder.binary_string_length,
             strategy=self.strategy.name,
         )
-        kwargs_string = ', '.join([f'{k}={v}' for k, v in kwargs.items()])
+        kwargs_string = ", ".join([f"{k}={v}" for k, v in kwargs.items()])
         classname = self.__class__.__name__
-        template = '{classname}({kwargs_string})'
-        return f'{classname}({kwargs_string})'
+        return f"{classname}({kwargs_string})"
 
     def get_encoded_text(self, text: str) -> List[int]:
         """Encodes each character of the text and returns a list.
@@ -38,7 +47,9 @@ class Converter(object):
         encoded_chr_list = [ord(x) for x in text]
         return encoded_chr_list
 
-    def get_decoded_text(self, encoded_chr_list: List[int], as_list: bool = False) -> Union[List[str], str]:
+    def get_decoded_text(
+        self, encoded_chr_list: List[int], as_list: bool = False
+    ) -> Union[List[str], str]:
         """Decodes each character from an encoded-character-list (``encoded_chr_list``) and
         returns a either a string (if ``as_list = False``) or
         a list of decoded strings (if ``as_list = True``).
@@ -46,8 +57,8 @@ class Converter(object):
         The encoding/decoding strategy is picked from the ``Converter.strategy``.
         """
 
-        if not(as_list):
-            text = ''.join(chr(x) for x in encoded_chr_list)
+        if not (as_list):
+            text = "".join(chr(x) for x in encoded_chr_list)
         else:
             text = [chr(x) for x in encoded_chr_list]
 
@@ -78,10 +89,12 @@ class Converter(object):
         return str_bin2N_list
 
     def split_text(self, text: str, length=4) -> List[str]:
-        split_text_list = list(map(''.join, zip(*[iter(text)] * length)))
+        split_text_list = list(map("".join, zip(*[iter(text)] * length)))
         return split_text_list
 
-    def convert_to_dnabase(self, bin_str_list: List[str], strategy: Optional[str] = None) -> Tuple[List[str], List[str]]:
+    def convert_to_dnabase(
+        self, bin_str_list: List[str], strategy: Optional[str] = None
+    ) -> Tuple[List[str], List[str]]:
         # A list of two-character binary strings
         dnabase_bin2: List[str] = []
 
@@ -105,7 +118,7 @@ def set_converter(
     schema: str = "AGCT",
     binary_string_length: int = 8,
     strategy: str = "ascii",
-    converter: Optional[Converter] = None
+    converter: Optional[Converter] = None,
 ) -> Converter:
     """Creates a ``Converter`` if no ``Converter`` is provided."""
 
