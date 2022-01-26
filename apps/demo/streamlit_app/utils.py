@@ -206,11 +206,15 @@ def display_output(X: str, Y: str, options: Dict):
             with col1:
                 show_output(options, Y)
             with col2:
-                st.button(
-                    label="Copy Result",
-                    help="Click to copy result to clipboard",
-                    on_click=pyperclip.copy(Y)
-                )
+                try:
+                    st.button(
+                        label="Copy Result",
+                        help="Click to copy result to clipboard",
+                        on_click=pyperclip.copy(Y)
+                    )
+                except pyperclip.PyperclipException as e:
+                    print(e)
+
         else:
             show_output(options, Y)
         with st.container():
