@@ -83,3 +83,28 @@ README.md               # readme file explaining anything that needs some docume
    ```
 
    Source: https://stackoverflow.com/a/13098607/8474894
+
+1. How to skip formatting with black in certain parts of a file?
+
+   See here: https://stackoverflow.com/questions/58584413/black-formatter-ignore-specific-multi-line-code
+
+   The following block of code is left untouched by black by adding `# fmt: on` and `# fmt: off` before and after the code block.
+
+   ```python
+   # fmt: off
+   np.array(
+      [
+         [1, 0, 0, 0],
+         [0, -1, 0, 0],
+         [0, 0, 1, 0],
+         [0, 0, 0, -1],
+      ]
+   )
+   # fmt: on
+   ```
+
+   For inline skipping, use `# fmt: skip`.
+
+   ```python
+   from typing import Dict, List, Tuple, Optional, Union  # fmt: skip
+   ```
