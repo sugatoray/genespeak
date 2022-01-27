@@ -37,7 +37,7 @@ def setup_sidebar() -> Tuple[Dict, Dict]:
             index=0,
         )
         options["show_balloons"] = st.checkbox(
-            label="Show balloons",
+            label="Show balloons 🎈🎉",
             value=Defaults.SHOW_BALLOONS,
         )
         options["schema"] = st.selectbox(
