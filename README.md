@@ -15,13 +15,6 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/sugatoray/genespeak/badge)][#codefactor-package]
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)][#demo-streamlit-app]
 [![DOI](https://zenodo.org/badge/442934986.svg)][#doi-zenodo]
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=alert_status)][#gh-sonarcloud-repo]
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=security_rating)][#gh-sonarcloud-repo]
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=sqale_rating)][#gh-sonarcloud-repo]
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=ncloc)][#gh-sonarcloud-repo]
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=sqale_index)][#gh-sonarcloud-repo]
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=vulnerabilities)][#gh-sonarcloud-repo]
-[![OSSF CodeQL](https://github.com/sugatoray/genespeak/actions/workflows/scorecards-analysis.yml/badge.svg)][#gh-ossf-codeql-repo]
 
 [#github-license]: https://github.com/sugatoray/genespeak/blob/master/LICENSE
 [#pypi-package]: https://pypi.org/project/genespeak/
@@ -150,3 +143,26 @@ Let's have some fun! ✨ The following is a ***GeneSpeak thumbprint*** of `genes
 | **schema** | **strategy** | **thumbprint** |
 |:---:|:---:|:---|
 | `ATCG` | `ascii` | `TCTGTCTTTCGCTCTTTGAGTGAATCTTTCATTCCG` |
+
+
+## Repository Health Metrics 💟
+
+Includes health and security badges from:
+
+- Sonarcloud
+- OSSF Code Quality
+
+<details>
+<summary><strong>Click to expand 👇</strong></summary>
+<p>
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=alert_status)][#gh-sonarcloud-repo]
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=security_rating)][#gh-sonarcloud-repo]
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=sqale_rating)][#gh-sonarcloud-repo]
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=ncloc)][#gh-sonarcloud-repo]
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=sqale_index)][#gh-sonarcloud-repo]
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=vulnerabilities)][#gh-sonarcloud-repo]
+[![OSSF CodeQL](https://github.com/sugatoray/genespeak/actions/workflows/scorecards-analysis.yml/badge.svg)][#gh-ossf-codeql-repo]
+
+</p>
+</details>
