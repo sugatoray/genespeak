@@ -2,7 +2,7 @@
 		build buildcheck buildplus buildcheckplus getpackageinfo \
 		github pypi testpypi archive archive-spec \
 		clean cleanall style check pipinstalltest \
-		streamlit_demo streamlit_run \
+		streamlit_demo streamlit_run freeup_port \
 		this thispy thatpy
 
 
@@ -15,6 +15,7 @@ STREAMLIT_DEMO_APP := "./apps/demo/streamlit_app/app.py"
 STREAMLIT_PORT := 12321
 ARCHIVES_DIR := ".archives"
 
+## Code maintenance
 
 black:
 	black --target-version py38 $(PACKAGE_NAME) tests apps setup.py
@@ -28,13 +29,24 @@ test:
 types:
 	python -m $(PACKAGE_NAME) tests
 
+## Install for development
+
 install:
 	python -m pip install -e ".[dev]"
 	pre-commit install
 
+## Install from test.pypi.org
+
+pipinstalltest:
+	@if [ $(VERSION) ]; then $(PIPINSTALL_PYPITEST) $(PACKAGE_NAME)==$(VERSION); else $(PIPINSTALL_PYPITEST) $(PACKAGE_NAME); fi;
+
+## Run interrogate
+
 interrogate:
 	interrogate -vv --ignore-nested-functions --ignore-semiprivate --ignore-private --ignore-magic --ignore-module --ignore-init-method --fail-under 100 tests
 	interrogate -vv --ignore-nested-functions --ignore-semiprivate --ignore-private --ignore-magic --ignore-module --ignore-init-method --fail-under 100 $(PACKAGE_NAME)
+
+## Build and Release
 
 build: clean
 	python setup.py sdist
@@ -106,12 +118,13 @@ clean:
 cleanall: clean
 	rm -rf build/* dist/* $(PACKAGE_NAME).egg-info/* $(ARCHIVES_DIR)/*
 
+## Style Checks and Unit Tests
+
 style: clean black flake interrogate clean
 
 check: clean black flake interrogate test clean
 
-pipinstalltest:
-	@if [ $(VERSION) ]; then $(PIPINSTALL_PYPITEST) $(PACKAGE_NAME)==$(VERSION); else $(PIPINSTALL_PYPITEST) $(PACKAGE_NAME); fi;
+## Streamlit App
 
 streamlit_demo:
 	# Note: To run the following command the port 8051 needs to be available.
@@ -131,6 +144,18 @@ streamlit_run:
 	#       sudo fuser -k $(STREAMLIT_PORT)/tcp
 	streamlit run $(STREAMLIT_DEMO_APP) --server.port=$(STREAMLIT_PORT) &
 
+## Release a Port
+
+freeup_port:
+	#-----------------------------
+	# Note:
+	# 		Default PORT=8051
+	# Usage:
+	# $ freeup_port PORT=8051
+	#
+	#-----------------------------
+	$(eval PORT := $(shell if [ -z $(PORT) ]; then echo 8051; else echo $(PORT); fi))
+	sudo fuser -k $(PORT)/tcp
 
 ################  BELOW THIS LINE:  MEANT FOR TESTING ONLY    ################
 
@@ -149,4 +174,3 @@ thatpy: thispy
 	@echo FIELD is: [$(FIELD)]
 	$(eval BRANCH := $(shell if [ -z $(BRANCH) ]; then echo HEAD; else echo $(BRANCH); fi))
 	@echo BRANCH is: [$(BRANCH)]
-
