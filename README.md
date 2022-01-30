@@ -164,11 +164,13 @@ Includes health and security badges from:
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sugatoray_genespeak&metric=vulnerabilities)][#gh-sonarcloud-repo]
 [![OSSF CodeQL](https://github.com/sugatoray/genespeak/actions/workflows/scorecards-analysis.yml/badge.svg)][#gh-ossf-codeql-repo]
 
+</p>
+</details>
     
 ## Contributors ✨
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %-orange.svg?style=flat-square)](#contributors)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -182,5 +184,4 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind are welcome!
-</p>
-</details>
+
