@@ -2,18 +2,7 @@
   "files": ["README.md"],
   "imageSize": 100,
   "commit": false,
-  "contributors": [
-    {
-      "login": "sugatoray",
-      "name": "Sugato Ray",
-      "avatar_url": "https://avatars.githubusercontent.com/u/10201242?v=4",
-      "profile": "https://www.linkedin.com/in/sugatoray/",
-      "contributions": [
-        "code",
-        "maintenance"
-      ]
-    }
-  ],
+  "contributors": [],
   "contributorsPerLine": 7,
   "contributorsSortAlphabetically": false,
   "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=flat-square)](#contributors)",
