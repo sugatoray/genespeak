@@ -1,0 +1,29 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "sugatoray",
+      "name": "Sugato Ray",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10201242?v=4",
+      "profile": "https://www.linkedin.com/in/sugatoray/",
+      "contributions": [
+        "code",
+        "doc",
+        "ideas",
+        "infra",
+        "maintenance",
+      ]
+    },
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "genespeak",
+  "projectOwner": "sugatoray",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true,
+  "badgeTemplate": "<p align=\"center\">\n  <a href=\"#contributors-\">\n    <img src=\"https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=flat-square\">\n  </a>\n  <a href=\"https://github.com/sugatoray/genespeak/blob/master/LICENSE\">\n    <img src=\"https://img.shields.io/github/license/sugatoray/genespeak?logo=github&style=flat&color=green\">\n  </a>\n</p>"
+}
