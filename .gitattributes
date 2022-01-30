@@ -4,7 +4,7 @@
 # git-archives while making github releases.
 # Note:
 # - Add "export-ignore" after the file(s)/folders
-#   that should not supposed to be part of the release(s).
+#   that should not to be part of the release(s).
 # Source:
 # - https://stackoverflow.com/questions/50059612/how-to-ignore-some-files-in-release-with-git
 # - https://git-scm.com/docs/git-archive#git-archive-export-ignore
