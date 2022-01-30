@@ -17,7 +17,7 @@
         "infra",
         "maintenance",
       ]
-    },
+    }
   ],
   "contributorsPerLine": 7,
   "projectName": "genespeak",
