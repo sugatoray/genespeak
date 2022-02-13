@@ -64,10 +64,9 @@ def setup_preamble():
     with st.container():
         st.image(Defaults.GENESPEAK_BANNER_URL, caption="GeneSpeak Banner")
 
-        st.write(
-            dedent(
-                """
+        st.write(dedent("""
             <!--- BADGES: START --->
+            
             [![GitHub - License](https://img.shields.io/github/license/sugatoray/genespeak?logo=github&style=flat&color=green)][#github-license]
             [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/genespeak?logo=pypi&style=flat&color=blue)][#pypi-package]
             [![PyPI - Package Version](https://img.shields.io/pypi/v/genespeak?logo=pypi&style=flat&color=orange)][#pypi-package]
@@ -85,6 +84,7 @@ def setup_preamble():
             [#conda-forge-feedstock]: https://github.com/conda-forge/genespeak-feedstock
             [#docs-package]: https://sugatoray.github.io/genespeak/
             [#codefactor-package]: https://www.codefactor.io/repository/github/sugatoray/genespeak
+            
             <!--- BADGES: END --->
 
             GeneSpeak allows you to encode regular text as DNA single-strand
