@@ -3,7 +3,7 @@
 # import os
 # import pyautogui # This does not work on Streamlit Cloud
 # import utils as U
-import appfactory as F
+from composer import appfactory as A
 import streamlit as st
 
 ## To emulate streamlit cloud specific app
@@ -12,7 +12,7 @@ import streamlit as st
 
 st.header("GeneSpeak - Demo App 🧬")
 
-F.setup_preamble()
+A.setup_preamble()
 
 options, buttons = F.setup_sidebar()
 

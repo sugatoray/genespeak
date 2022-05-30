@@ -2,7 +2,7 @@ from typing import Dict, List, Optional, Tuple, Union
 
 import annotated_text as AT
 import streamlit as st
-import utils as U
+from composer import utils as U
 
 Defaults = U.Defaults
 

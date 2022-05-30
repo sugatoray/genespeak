@@ -2,8 +2,8 @@ from textwrap import dedent
 from typing import Dict, Tuple
 
 import streamlit as st
-import utils as U
-import visualization as V
+from composer import utils as U
+from composer import visualization as V
 
 Defaults = U.Defaults
 
