@@ -1,4 +1,9 @@
 # Allow users to automatically tag themselves to issues
+#
+# Usage:
+#  - a github user (a member of the repo) needs to comment
+#    with "#self-assign" on an issue to be assigned to them.
+#------------------------------------------------------------
 
 name: Self-assign
 on:
