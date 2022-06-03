@@ -14,7 +14,7 @@ st.header("GeneSpeak - Demo App 🧬")
 
 A.setup_preamble()
 
-options, buttons = F.setup_sidebar()
+options, buttons = A.setup_sidebar()
 
 placeholder = st.empty()
 with placeholder.container():
