@@ -19,7 +19,7 @@ options, buttons = F.setup_sidebar()
 placeholder = st.empty()
 with placeholder.container():
     st.write("## Simple Conversion: `Text` 🔄 `DNA`")
-    F.setup_app(options)
+    A.setup_app(options)
 
 if buttons["reset"] or buttons["refresh"]:
     # if not U.is_streamlit_cloud():
